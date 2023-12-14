@@ -29,7 +29,8 @@ export class LoginComponent {
         console.log('response', response);
         this.isLoading = false;
         this.toast.success({
-          detail: 'Login successful.',
+          detail: 'Logged In',
+          summary: 'Log in successfully',
         });
         this.router.navigate(['/courses']);
       },

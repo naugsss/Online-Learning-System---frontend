@@ -23,6 +23,6 @@ export class AdminMentorComponent implements OnInit {
 
   onButtonClicked() {
     this.mentorName = this.searchInput.nativeElement.value;
-    
+    this.CourseDataService.addMentor(this.mentorName);
   }
 }

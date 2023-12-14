@@ -40,13 +40,6 @@ button:hover {
   font-size: 20px;
 }
 
-/* .header-right {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  margin-bottom: 100px;
-} */
-
 .cart {
   text-decoration: none;
   color: #afb2bf;
@@ -75,6 +68,7 @@ button:hover {
 
 .profile-logo {
   /* margin-bottom: 20px; */
+
   cursor: pointer;
 }
 

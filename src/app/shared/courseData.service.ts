@@ -74,7 +74,7 @@ export class CourseDataService {
 
   addMentor(mentorName: string) {
     this.http
-      .post('http://127.0.0.1:8000/courses/', {
+      .post('http://127.0.0.1:8000/mentor/', {
         username: mentorName,
       })
       .subscribe({
@@ -82,12 +82,24 @@ export class CourseDataService {
           if (response['message'] === 'No such username exists.') {
             this.toast.warning({
               detail: 'No such user exists.',
-              summary: 'Visit my learning section to access the course',
+              summary: 'Please enter another username',
             });
-          } else {
+          } else if (
+            response['message'] === 'This person is already a mentor'
+          ) {
+            this.toast.warning({
+              detail: response['message'],
+              summary: 'Please write another username',
+            });
+          } else if (response['message'] === 'Mentor added successfully') {
             this.toast.success({
               detail: response['message'],
-              summary: 'Visit my learning section to access the course',
+              summary: 'Now he can also add courses',
+            });
+          } else {
+            this.toast.error({
+              detail: 'There was an error',
+              summary: 'Please try again.',
             });
           }
         },
