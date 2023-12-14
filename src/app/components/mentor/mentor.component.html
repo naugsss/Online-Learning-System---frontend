@@ -1,0 +1,146 @@
+<div class="container">
+  <div class="mentor-earning">
+    <h1>My Earnings</h1>
+    <hr />
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Earning</th>
+      </tr>
+      <tr *ngFor="let mentor of mentorEarnings">
+        <td>
+          <span class="profile-logo">
+            <img
+              src="../../../assets/login_signup/profile.svg"
+              alt="profile"
+              height="40px"
+            />
+          </span>
+          <span class="mentor-name"> {{ mentor.name }} </span>
+        </td>
+        <td>{{ mentor.course_name }}</td>
+        <td>₹ {{ mentor.earning }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="add-course">
+    <div class="add-new-course">
+      <h1>Add a new course</h1>
+      <hr />
+      <div class="form-container">
+        <div class="course-form" *ngIf="isCourseDetailsVisible">
+          <form
+            class="course-details"
+            #courseForm="ngForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <h2>Course Details</h2>
+            <div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  class="form-style"
+                  type="text"
+                  placeholder="Enter course name"
+                  id="name"
+                  name="name"
+                  ngModel
+                />
+              </div>
+
+              <div>
+                <label for="price">Price</label>
+                <input
+                  type="text"
+                  placeholder="Enter price of course"
+                  id="price"
+                  class="form-style"
+                  name="price"
+                  ngModel
+                />
+              </div>
+              <div>
+                <label for="duration">Duration</label>
+                <input
+                  type="text"
+                  placeholder="Enter duration of course"
+                  id="duration"
+                  class="form-style"
+                  name="duration"
+                  ngModel
+                />
+              </div>
+
+              <div>
+                <label for="video">Video Link</label>
+                <input
+                  type="text"
+                  placeholder="Enter video link"
+                  id="video"
+                  class="form-style"
+                  name="video"
+                  ngModel
+                />
+              </div>
+            </div>
+
+            <button class="btn">Add Course</button>
+          </form>
+        </div>
+
+        <div class="faq-form">
+          <form #faqForm="ngForm" *ngIf="!isCourseDetailsVisible">
+            <h2>FAQ Details</h2>
+            <div class="faq">
+              <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+                <div class="form-group">
+                  <label for="question-{{ i }}">Question</label>
+                  <input
+                    type="text"
+                    id="question-{{ i }}"
+                    name="question"
+                    class="form-style"
+                    placeholder="Question"
+                    [(ngModel)]="faqs[i].question"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="answer-{{ i }}">Answer</label>
+                  <input
+                    type="text"
+                    name="answer"
+                    id="answer-{{ i }}"
+                    class="form-style"
+                    placeholder="Answer"
+                    [(ngModel)]="faqs[i].answer"
+                    required
+                  />
+                </div>
+
+                <button type="button" (click)="removeFaq(i)">Remove</button>
+              </div>
+
+              <button type="button" class="btn" (click)="addFaq()">
+                Add FAQ
+              </button>
+            </div>
+
+            <button class="btn" (click)="onBackClick()">Back</button>
+            <button class="btn" (click)="onSubmitFaq()">Submit FAQs</button>
+          </form>
+        </div>
+
+        <div class="course-image">
+          <img
+            src="../../../assets/courses/new-course.svg"
+            alt="couldn't preview image"
+            height="400px"
+            width="550px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.container {
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.active {
+  color: #47a5c5 !important;
+  border-bottom: 1px solid #47a5c5 !important;
+  font-weight: 700;
+}
+
+.heading {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  width: 40%;
+  border-bottom: 1px solid #2c333f;
+}
+
+.admin-course,
+.admin-mentor {
+  margin-top: 20px;
+}

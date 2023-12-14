@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>My Learning</h2>
+  <hr />
+  <div class="courses">
+    <app-course
+      class="course-card"
+      *ngFor="let courseEl of courses; let i = index"
+      [course]="courseEl"
+      [index]="i"
+      [price]="false"
+    ></app-course>
+  </div>
+</div>

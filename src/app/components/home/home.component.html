@@ -1,0 +1,75 @@
+<div class="home">
+  <div class="hero-section">
+    <h2 class="heading">
+      Empower Your Future with <span class="sub-heading">Coding Skills</span>
+    </h2>
+    <p class="heading-para">
+      With our online coding courses, you can learn at your own pace, from
+      anywhere in the world, and get access to a wealth of resources, including
+      hands-on projects, quizzes, and personalized feedback from instructors.
+    </p>
+    <img
+      class="home-page-img1"
+      src="../../../assets/home-page-img1.png"
+      alt="couldn't display image"
+      height="400px"
+      width="75%"
+    />
+  </div>
+  <hr class="hr" />
+
+  <!-- course card -->
+  <div class="courses-section">
+    <h2>Unlock the <span class="courses-heading">Power of Code</span></h2>
+    <p class="courses-sub-heading">Learn to build anything you can imagine</p>
+
+    <div class="courses-card">
+      <div *ngFor="let course of courses">
+        <app-course [course]="course" class="course-card"></app-course>
+      </div>
+    </div>
+    <button class="explore" routerLink="/courses">Explore all courses</button>
+  </div>
+
+  <!-- feedbacks -->
+  <hr class="hr" />
+
+  <div class="feedback-section">
+    <h2>
+      Look what others have to
+      <span class="feedback-heading">say about us</span>
+    </h2>
+    <div class="courses-feedback">
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          This is the best course out there to learn react concepts from the
+          scratch. The instructor teaches from the basics explaining each and
+          every concept in depth
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          Thank you sir for teaching DSA concepts in a graspable manner and
+          supporting us throughout the course
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          Thank you sir for teaching DSA concepts in a graspable manner and
+          supporting us throughout the course
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          This is the best course out there to learn react concepts from the
+          scratch. The instructor teaches from the basics explaining each and
+          every concept in depth
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

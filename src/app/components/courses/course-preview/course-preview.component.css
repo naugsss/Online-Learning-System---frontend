@@ -1,0 +1,87 @@
+.preview-container {
+  height: 100%;
+  margin-left: 150px;
+  margin-top: 70px;
+}
+
+.course-heading {
+  font-size: 40px;
+  margin-bottom: 0;
+}
+
+.course-description {
+  display: flex;
+  gap: 80px;
+}
+
+.stars {
+  font-size: large;
+}
+
+.course-price {
+  font-size: 30px;
+}
+
+.purchase-options {
+  display: flex;
+  gap: 35px;
+}
+
+.btn {
+  background-color: #ffd60ae1;
+  padding: 10px;
+  margin-top: 5px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+}
+
+.faq {
+  margin-top: 50px;
+  width: 80%;
+}
+
+.accordion {
+  --bs-accordion-btn-color: ghostwhite;
+  --bs-accordion-btn-bg: #010914;
+  --bs-accordion-active-color: white;
+  --bs-accordion-active-bg: #010914;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #2c333f;
+  font-size: 20px;
+  background-color: #161d29;
+  color: white;
+}
+
+.accordion-button {
+  font-size: 20px;
+}
+
+.feedback-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.feedback-section > hr {
+  width: 80%;
+}
+
+.courses-feedback {
+  margin: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course-feedback {
+  margin-right: 30px;
+  padding: 10px;
+  width: 250px;
+  background-color: #161d29;
+  color: white;
+}
+
+.feedback-icon {
+  width: 100%;
+  font-size: 40px;
+}

@@ -1,0 +1,123 @@
+.page-header {
+  display: flex;
+  height: 84px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 50px;
+  background-color: #161d29;
+  border-bottom: 1px solid #2c333f;
+}
+
+a:hover {
+  color: #afb2bf86;
+  font-weight: 600;
+}
+
+button:hover {
+  color: #afb2bf;
+  font-weight: 600;
+}
+
+.page-header-nav > a,
+.page-header-login-logout > a {
+  color: #afb2bf;
+  text-decoration: none;
+  padding: 20px;
+  font-size: 20px;
+}
+
+/* .page-header-login-logout > a {
+  display: flex;
+  justify-items: flex-end;
+  align-items: end;
+} */
+
+.login-btn {
+  text-decoration: none;
+  color: #afb2bf;
+  background-color: #161d29;
+  border: none;
+  font-size: 20px;
+}
+
+/* .header-right {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 100px;
+} */
+
+.cart {
+  text-decoration: none;
+  color: #afb2bf;
+  background-color: #161d29;
+  border: none;
+  font-size: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+
+.cart-number {
+  position: absolute; /* Makes the number element absolutely positioned */
+  top: -10px; /* Positions the number above the cart icon slightly */
+  right: 30px;
+  /* Positions the number to the right of the cart icon slightly */
+  color: rgba(1, 9, 20, 255);
+  border-radius: 8px;
+  text-align: center;
+  height: 18px;
+  width: 18px;
+  line-height: 16px;
+  background-color: #ffd60ae1;
+  margin: 0px; /* Adds padding to the number element */
+  font-size: 12px; /* Sets the font size of the number */
+}
+
+.profile-logo {
+  /* margin-bottom: 20px; */
+  cursor: pointer;
+}
+
+.profile-container {
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  position: absolute;
+  top: 10%;
+  left: 84%;
+  text-decoration: none;
+  z-index: 10;
+  /* background-color: #161d29; */
+}
+
+.profile-btn {
+  background-color: #161d29;
+  border: none;
+  color: white;
+  padding: 5px;
+}
+
+.profile {
+  background-color: transparent;
+  border: none;
+}
+
+.mentor {
+  border-top: 1px solid #2c333f;
+}
+
+.my-learning {
+  border-top: 1px solid #2c333f;
+  border-bottom: 1px solid #2c333f;
+}
+
+.admin {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.logout {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}

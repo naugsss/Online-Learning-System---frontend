@@ -1,0 +1,74 @@
+.container {
+  height: 100vh;
+}
+.signup {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  gap: 45px;
+}
+
+div {
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  margin-bottom: 5px;
+  color: #afb2be;
+}
+
+.btn {
+  background-color: #ffd60ae1;
+  padding: 10px;
+  width: 100%;
+  margin-top: 5px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: none;
+  color: #afb2be;
+  box-sizing: border-box;
+  background-color: #161d29;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-style {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form {
+  width: 508px;
+  padding: 32px;
+}
+
+.no-account > a {
+  margin-top: 0px;
+  color: #47a5c5;
+  text-decoration: none;
+}

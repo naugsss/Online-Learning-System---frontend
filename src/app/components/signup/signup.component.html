@@ -1,0 +1,86 @@
+<div class="container">
+  <h2 class="heading">Create an account</h2>
+
+  <div class="signup">
+    <div class="signup-form">
+      <form
+        class="form-group"
+        #signupForm="ngForm"
+        (ngSubmit)="onSubmit(signupForm)"
+      >
+        <div>
+          <label for="name">Name</label>
+          <input
+            type="text"
+            placeholder="Enter name"
+            id="name"
+            ngModel
+            class="form-style"
+            name="name"
+          />
+        </div>
+        <div>
+          <label for="username">Username</label>
+          <input
+            class="form-style"
+            type="text"
+            placeholder="Enter a username"
+            id="username"
+            ngModel
+            name="username"
+          />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            placeholder="Enter email address"
+            id="email"
+            class="form-style"
+            ngModel
+            name="email"
+          />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            id="password"
+            class="form-style"
+            ngModel
+            name="password"
+          />
+        </div>
+        <div>
+          <label for="repassword">Re-enter password</label>
+          <input
+            type="password"
+            placeholder="Re-enter password"
+            id="repassword"
+            ngModel
+            class="form-style"
+            name="repassword"
+          />
+        </div>
+        <div>
+          <button class="btn">Sign Up</button>
+        </div>
+        <div>
+          <p>
+            Already have an account?
+            <span class="have-account"><a routerLink="/login">Log In</a></span>
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="signup-image">
+      <img
+        src="../../../assets/login_signup/signup.svg"
+        alt="couldn't preview image"
+        height="550px"
+        width="550px"
+      />
+    </div>
+  </div>
+</div>

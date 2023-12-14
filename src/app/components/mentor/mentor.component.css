@@ -1,0 +1,117 @@
+.container {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+}
+
+input[type="text"],
+select {
+  width: 500px;
+  padding: 12px 20px;
+  display: inline-block;
+  border: none;
+  color: #afb2be;
+  box-sizing: border-box;
+  background-color: #161d29;
+  border-radius: 5px;
+}
+
+.add-new-course {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.add-new-course > hr {
+  margin: 0;
+}
+
+.add-course,
+.mentor-earning {
+  margin-left: 70px;
+  margin-bottom: 30px;
+}
+
+.course-form {
+  width: 508px;
+}
+
+.form-style {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  gap: 50px;
+}
+
+.course-details {
+  margin-top: 30px;
+}
+
+hr {
+  width: 80vw;
+}
+
+.btn {
+  background-color: #ffd60ae1;
+  padding: 10px;
+  width: 100%;
+  margin-top: 5px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+}
+
+table {
+  background-color: #161d29;
+  margin-top: 50px;
+  text-align: center;
+  border: 1px solid #2c333f;
+  border-radius: 10px;
+  font-size: 25px;
+  height: 450px;
+  display: block;
+  overflow-y: scroll;
+}
+
+.profile-logo {
+  background-color: transparent;
+}
+
+th,
+td {
+  width: 1505px;
+  height: 75px;
+}
+tr {
+  border-bottom: 1px solid #2c333f;
+}
+
+.mentor-name {
+  background: none;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 1px;
+}
+::-webkit-scrollbar-track {
+  border: 2px solid #2c333f;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #161d29;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #88ba1c;
+}

@@ -1,0 +1,83 @@
+.app-courses {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.course-section {
+  margin-top: 50px;
+  display: flex;
+  align-items: start;
+}
+.searchbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  justify-content: center;
+  gap: 45px;
+}
+
+.filter {
+  width: 14%;
+  margin: 8% 10px;
+}
+
+input[type="text"],
+select {
+  border-radius: 10px;
+  width: 40vw;
+  padding: 12px 20px;
+  display: inline-block;
+  border: none;
+  color: #afb2be;
+  box-sizing: border-box;
+  background-color: #161d29;
+}
+
+.btn {
+  background-color: #ffd60a;
+  padding: 10px;
+  width: 100px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+}
+
+.load-more {
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: #ffd60a;
+  padding: 10px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.courses {
+  width: 80%;
+}
+
+.course-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.course {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course-container {
+  width: 100%;
+  display: flex;
+  margin-left: 30px;
+  align-items: start;
+  justify-items: start;
+}

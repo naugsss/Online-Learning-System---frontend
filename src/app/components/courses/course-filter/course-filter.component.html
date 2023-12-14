@@ -1,0 +1,19 @@
+<div class="container">
+  <h4>Filter by rating</h4>
+  <div *ngFor="let rating of [1, 2, 3, 4, 5]; let i = index">
+    <label for="rating{{ rating }}">
+      <input
+        type="radio"
+        id="rating{{ rating }}"
+        name="rating"
+        value="{{ rating }}"
+        (click)="filterCourseByRating(rating)" />
+
+      <i
+        class="fa fa-star"
+        *ngFor="let star of [1, 2, 3, 4, 5]; let j = index"
+        [ngClass]="{ filled: i >= j }"
+      ></i
+    ></label>
+  </div>
+</div>

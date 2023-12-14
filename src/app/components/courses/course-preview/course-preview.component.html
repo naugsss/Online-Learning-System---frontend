@@ -1,0 +1,124 @@
+<div class="preview-container">
+  <div class="course-description">
+    <img
+      src="../../../../assets/courses/onlinecourse2.webp"
+      alt=""
+      height="250px"
+    />
+    <div class="course-details">
+      <p class="course-heading">{{ selectedCourse.name }}</p>
+      <div class="stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+      </div>
+      <p class="course-price">₹ {{ selectedCourse.price }}</p>
+      <div class="purchase-options">
+        <button class="buy-now btn" (click)="onBuyNowClick(selectedCourse)">
+          Buy Now
+        </button>
+        <button class="add-to-cart btn" (click)="addTocart(selectedCourse)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h2>FAQ</h2>
+    <hr />
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne"
+            aria-expanded="false"
+            aria-controls="flush-collapseOne"
+          >
+            I don't have any Prior experience of any Programming Language Can I
+            take this Course?
+          </button>
+        </h2>
+        <div
+          id="flush-collapseOne"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            Yes, this course is not specific to any programming language, rather
+            it is about the good practices that we should follow while writing
+            code.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo"
+            aria-expanded="false"
+            aria-controls="flush-collapseTwo"
+          >
+            Is the course in Hindi or English?
+          </button>
+        </h2>
+        <div
+          id="flush-collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            The course is taught in Hinglish (a mix of Hindi & English).
+            [Majorly Hindi]
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feedback-section">
+    <h2>Look what others have to say about us</h2>
+    <hr />
+    <div class="courses-feedback">
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          This is the best course out there to learn react concepts from the
+          scratch. The instructor teaches from the basics explaining each and
+          every concept in depth
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          Thank you sir for teaching DSA concepts in a graspable manner and
+          supporting us throughout the course
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          Thank you sir for teaching DSA concepts in a graspable manner and
+          supporting us throughout the course
+        </p>
+      </div>
+      <div class="course-feedback">
+        <i class="fa-solid fa-quote-left feedback-icon"></i>
+        <p>
+          This is the best course out there to learn react concepts from the
+          scratch. The instructor teaches from the basics explaining each and
+          every concept in depth
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

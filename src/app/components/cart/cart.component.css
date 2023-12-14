@@ -1,0 +1,121 @@
+.container {
+  margin: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 120px;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.empty-cart {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.subheading {
+  margin-top: 30px;
+  font-size: 35px;
+}
+
+/* .container {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+} */
+.card {
+  background-color: #161d29;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.card:hover {
+  transition: all 0.4s ease-in;
+  border: 1px solid #344150;
+
+  background-color: #1e242f;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.card-img {
+  padding: 10px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.card-text {
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.card-body {
+  margin-left: 20px;
+}
+
+.btn {
+  background-color: rgba(255, 214, 10, 0.882);
+  padding: 10px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-right: 25px;
+  margin-top: 25px;
+}
+.stars {
+  display: inline-block;
+}
+
+.fa-star {
+  color: #ddd;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.fa-star.filled {
+  color: #f1c40f;
+}
+
+.total-price {
+  margin-right: 150px;
+  height: 100%;
+  padding: 15px;
+  width: 300px;
+  background-color: #161d29;
+  box-shadow: 0 4px 8px 0 #1b232e;
+}
+
+.price-heading {
+  border-bottom: 1px solid #2c333f;
+  padding: 10px;
+}
+
+.course-price {
+  font-size: 22px;
+}
+
+.price-total {
+  border-top: 1px solid #2c333f;
+  padding: 10px;
+}

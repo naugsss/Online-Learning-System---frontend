@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Cart</h1>
+  <hr />
+
+  <div class="empty-cart">
+    <div *ngIf="cart.length === 0">
+      <img
+        class="empty-cart-image"
+        src="../../../assets/cart/empty.svg"
+        alt="empty cart"
+        height="300px"
+      />
+      <p class="subheading">Your cart is empty, please add some items to it.</p>
+      <button class="btn" routerLink="/courses">Explore Course</button>
+    </div>
+  </div>
+
+  <div class="cards-container" *ngIf="cart.length > 0">
+    <div class="cards">
+      <div class="card" *ngFor="let course of cart; let j = index">
+        <div class="card-img">
+          <img
+            class="card-img-top"
+            src="../../../assets/courses/onlinecourse2.webp"
+            alt="Card image cap"
+            height="250px"
+          />
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ course.name }}</h4>
+          <p class="card-text">₹ {{ course.price }}</p>
+          <div class="stars">
+            <i
+              class="fa fa-star"
+              *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+              [ngClass]="{ filled: course.rating >= i + 1 }"
+            ></i>
+          </div>
+          <div class="cart-button">
+            <button class="btn" (click)="onBuyNowClick(course)">Buy Now</button>
+            <button class="btn" (click)="onRemoveClick(course.name)">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="total-price">
+      <h3 class="price-heading">Price Details</h3>
+      <ul class="course-price">
+        <li *ngFor="let course of cart">
+          {{ course.name }} - ₹ {{ course.price }}
+        </li>
+      </ul>
+      <h3 class="price-total">Subtotal: ₹ {{ calculateSubtotalPrice() }}</h3>
+    </div>
+  </div>
+
+  <!-- <app-course
+    class="course-card"
+    *ngFor="let courseEl of cart; let i = index"
+    [course]="courseEl"
+    [index]="i"
+  ></app-course> -->
+</div>

@@ -1,0 +1,39 @@
+<div class="app-courses">
+  <div class="searchbar">
+    <input
+      class="form-style"
+      type="text"
+      placeholder="Search for courses..."
+      id="searchtext"
+      name="searchtext"
+      [(ngModel)]="searchtext"
+      (keyup)="onSearchChange()"
+      #searchInput
+    />
+    <button (click)="onSearchClick()" class="btn">Search</button>
+  </div>
+  <!-- courses -->
+  <div class="course-section">
+    <!-- filter in the left -->
+    <div class="course-container">
+      <!-- courses list -->
+      <div class="filter">
+        <app-course-filter></app-course-filter>
+      </div>
+      <div class="courses">
+        <h2>A broad selection of courses</h2>
+        <hr />
+        <div class="course-card">
+          <app-course
+            *ngFor="let courseEl of filteredCourse; let i = index"
+            [course]="courseEl"
+            [index]="i"
+          ></app-course>
+        </div>
+        <button class="load-more" (click)="loadMoreCourses()">
+          Load more courses
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

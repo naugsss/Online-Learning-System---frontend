@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="signup">
+    <div class="signup-form">
+      <h2>Welcome Back</h2>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            class="form-style"
+            type="text"
+            placeholder="Enter a username"
+            id="username"
+            name="username"
+            ngModel
+            value="naugs"
+          />
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            id="password"
+            class="form-style"
+            name="password"
+            ngModel
+            value="1234"
+          />
+        </div>
+
+        <div>
+          <button class="btn" type="submit">Log In</button>
+        </div>
+        <div>
+          <p>
+            Don't have a account?
+            <span class="no-account"><a routerLink="/signup">Sign Up</a></span>
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="signup-image">
+      <img
+        src="../../../assets/login_signup/login.svg"
+        alt="couldn't preview image"
+        height="350px"
+        width="550px"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="page-header">
+  <div class="page-header-logo">
+    <h2>Watch & Learn</h2>
+  </div>
+
+  <div>
+    <div class="page-header-nav">
+      <a
+        routerLink=""
+        [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >HOME</a
+      >
+      <a
+        routerLink="courses"
+        [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >COURSES</a
+      >
+    </div>
+  </div>
+
+  <div class="page-header-login-logout">
+    <button class="login-btn" routerLink="login" *ngIf="!isAuthenticated">
+      Log In
+    </button>
+    <div *ngIf="isAuthenticated" class="header-right">
+      <div>
+        <button class="cart" routerLink="cart">
+          <span><i class="fa-solid fa-cart-shopping"></i></span> Cart
+          <span class="cart-number" *ngIf="cartItemNumber > 0">{{
+            cartItemNumber
+          }}</span>
+        </button>
+        <button class="profile" (click)="toggleProfileOptions()">
+          <img
+            class="profile-logo"
+            src="../../../assets/login_signup/profile.svg"
+            alt="profile"
+            height="36px"
+          />
+        </button>
+      </div>
+
+      <div class="profile-container" *ngIf="showProfileOptions">
+        <button class="profile-btn admin" routerLink="admin">
+          Admin Dashboard
+        </button>
+        <button class="profile-btn mentor" routerLink="mentor">
+          Mentor Dashboard
+        </button>
+        <button class="profile-btn my-learning" routerLink="myLearning">
+          My Learning
+        </button>
+        <button class="profile-btn logout" (click)="onLogout()">Log Out</button>
+      </div>
+
+      <!-- <button class="logout-btn" (click)="onLogout()">Log Out</button> -->
+    </div>
+  </div>
+</div>
+
+<!-- <div class="profile-container" *ngIf="showProfileOptions">
+  <button class="profile-btn admin">Admin Dashboard</button>
+  <button class="profile-btn mentor">Mentor Dashboard</button>
+  <button class="profile-btn my-learning" routerLink="myLearning">
+    My Learning
+  </button>
+  <button class="profile-btn logout" (click)="onLogout()">Log Out</button>
+</div> -->

@@ -1,0 +1,33 @@
+<div class="course">
+  <div class="card" (click)="cardClick()">
+    <img
+      class="card-img-top"
+      src="../../../assets/courses/onlinecourse2.webp"
+      alt="Card image cap"
+      height="200px"
+    />
+    <div class="card-body">
+      <p class="card-title">{{ course.name }}</p>
+      <div class="stars">
+        <i
+          class="fa fa-star"
+          *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+          [ngClass]="{ filled: course.rating >= i + 1 }"
+        ></i>
+      </div>
+      <p class="card-price" *ngIf="price">₹ {{ course.price }}</p>
+
+      <!-- <div class="purchase-options" *ngIf="isOnCoursePage()">
+        <button class="add-to-cart" (click)="addTocart(course)">
+          Add to Cart
+        </button>
+        <button class="buy-now">Buy now</button>
+      </div> -->
+
+      <!-- <div class="approval-options" *ngIf="isOnAdminPage()">
+        <button class="approve" (click)="approveCourse(course)">Approve</button>
+        <button class="reject">Reject</button>
+      </div> -->
+    </div>
+  </div>
+</div>

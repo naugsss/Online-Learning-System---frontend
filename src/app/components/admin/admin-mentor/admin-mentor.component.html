@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="add-mentor">
+    <h2>Add a new mentor</h2>
+    <hr />
+    <div class="add-new-mentor">
+      <input
+        type="text"
+        placeholder="Enter mentor name"
+        name="name"
+        [(ngModel)]="mentorName"
+        #searchInput
+      />
+      <button class="add-mentor-btn" (click)="onButtonClicked()">Add Mentor</button>
+    </div>
+  </div>
+  <h2>Mentor Details</h2>
+  <hr />
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Course</th>
+      <th>Earning</th>
+    </tr>
+    <tr *ngFor="let mentor of mentorEarnings">
+      <td>
+        <span class="profile-logo">
+          <img
+            src="../../../assets/login_signup/profile.svg"
+            alt="profile"
+            height="40px"
+          />
+        </span>
+        <span class="mentor-name"> {{ mentor.name }} </span>
+      </td>
+      <td>{{ mentor.course_name }}</td>
+      <td>₹ {{ mentor.earning }}</td>
+    </tr>
+  </table>
+</div>

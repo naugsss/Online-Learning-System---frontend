@@ -1,0 +1,108 @@
+.pending-courses {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+hr {
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.approval-options {
+  background-color: transparent;
+}
+
+.approve {
+  background-color: rgba(255, 214, 10, 0.882);
+  padding: 7px 12px;
+  color: rgba(1, 9, 20, 255);
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.reject,
+.disable {
+  background-color: rgba(255, 214, 10, 0.882);
+  padding: 7px 12px;
+  color: rgba(1, 9, 20, 255);
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 5px;
+  margin-left: 25px;
+}
+
+.request-container {
+  margin-top: 10px;
+}
+
+.courses-card {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.courses-container {
+  margin-top: 40px;
+}
+.all-courses {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+table {
+  background-color: #161d29;
+  margin-top: 50px;
+  border: 1px solid #2c333f;
+  border-radius: 10px;
+  font-size: 25px;
+  max-height: 450px;
+  display: block;
+  overflow-y: scroll;
+}
+
+.profile-logo {
+  background-color: transparent;
+}
+
+th,
+td {
+  padding-left: 80px;
+  width: 1505px;
+  height: 75px;
+}
+
+tr {
+  text-align: start;
+  border-bottom: 1px solid #2c333f;
+}
+
+.course-name {
+  background: none;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 1px;
+}
+::-webkit-scrollbar-track {
+  border: 2px solid #161d29;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c333f;
+  border-radius: 10px;
+}

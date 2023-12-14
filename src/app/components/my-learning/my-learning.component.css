@@ -1,0 +1,25 @@
+.course-card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+hr {
+  margin: 0;
+}
+
+.container {
+  margin: 50px;
+  width: 100%;
+  margin-left: 120px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.courses {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
