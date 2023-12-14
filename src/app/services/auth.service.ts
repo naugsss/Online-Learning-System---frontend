@@ -36,7 +36,7 @@ export class AuthService {
         password: password,
       })
       .pipe(
-        catchError(this.handleError),
+        // catchError(this.handleError),
         tap((response) => {
           console.log(response);
           this.handleLogin(response);
@@ -53,7 +53,7 @@ export class AuthService {
         password: password,
       })
       .pipe(
-        catchError(this.handleError),
+        // catchError(this.handleError),
         tap((response) => {
           console.log(response);
         })
@@ -100,22 +100,5 @@ export class AuthService {
     const user = new User(username, role, jwt_token);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
-  }
-
-  private handleError(errorResponse: any) {
-    let errorMessage = 'An Error Occured!';
-    if (!errorResponse.error || !errorResponse.error.error) {
-      return throwError(() => errorMessage);
-    }
-    switch (errorResponse.error.error.message) {
-      case 'This username already exists':
-        errorMessage = 'This username already exists';
-        break;
-
-      case 'Please enter valid credentials.':
-        errorMessage = 'Please enter valid credentials.';
-        break;
-    }
-    return throwError(() => errorMessage);
   }
 }

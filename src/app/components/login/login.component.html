@@ -12,8 +12,13 @@
             id="username"
             name="username"
             ngModel
-            value="naugs"
+            required
+            pattern="^\S+$"
+            #username="ngModel"
           />
+          <small *ngIf="username.invalid && username.touched"
+            >* Username is a required property</small
+          >
         </div>
 
         <div>
@@ -26,11 +31,18 @@
             name="password"
             ngModel
             value="1234"
+            required
+            #password="ngModel"
           />
+          <small *ngIf="password.invalid && password.touched"
+            >* Password is a required property</small
+          >
         </div>
 
         <div>
-          <button class="btn" type="submit">Log In</button>
+          <button class="btn" type="submit" [disabled]="!loginForm.valid">
+            Log In
+          </button>
         </div>
         <div>
           <p>

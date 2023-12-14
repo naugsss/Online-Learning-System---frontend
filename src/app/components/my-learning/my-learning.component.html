@@ -1,7 +1,20 @@
 <div class="container">
   <h2>My Learning</h2>
   <hr />
-  <div class="courses">
+
+  <div class="empty-page">
+    <div *ngIf="courses.length === 0">
+      <img
+        class="empty-page-image"
+        src="../../../assets/courses/my-learning.svg"
+        alt="my learning image"
+        height="300px"
+      />
+      <p class="subheading">You haven't purchased any course. Please purchase to access it</p>
+      <button class="btn" routerLink="/courses">Explore Courses</button>
+    </div>
+  </div>
+  <div class="courses" *ngIf="courses.length > 0">
     <app-course
       class="course-card"
       *ngFor="let courseEl of courses; let i = index"

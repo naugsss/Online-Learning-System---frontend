@@ -17,7 +17,13 @@
             ngModel
             class="form-style"
             name="name"
+            required
+            #name="ngModel"
+            pattern="^\S+$"
           />
+          <small *ngIf="name.invalid && name.touched"
+            >* Name is a required property</small
+          >
         </div>
         <div>
           <label for="username">Username</label>
@@ -28,7 +34,14 @@
             id="username"
             ngModel
             name="username"
+            required
+            #username="ngModel"
+            pattern="^\S+$"
+            
           />
+          <small *ngIf="username.invalid && username.touched"
+            >* Username is a required property</small
+          >
         </div>
         <div>
           <label for="email">Email</label>
@@ -39,7 +52,14 @@
             class="form-style"
             ngModel
             name="email"
+            required
+            #email="ngModel"
+            pattern="^\S+$"
+
           />
+          <small *ngIf="email.invalid && email.touched"
+            >* Email is a required property</small
+          >
         </div>
         <div>
           <label for="password">Password</label>
@@ -50,7 +70,12 @@
             class="form-style"
             ngModel
             name="password"
+            required
+            #password="ngModel"
           />
+          <small *ngIf="password.invalid && password.touched"
+            >* Password is a required property</small
+          >
         </div>
         <div>
           <label for="repassword">Re-enter password</label>
@@ -61,10 +86,16 @@
             ngModel
             class="form-style"
             name="repassword"
+            required
+            #repassword="ngModel"
           />
+          <small *ngIf="repassword.invalid && repassword.touched"
+            >* Password is a required property</small
+          >
+          <small *ngIf="passwordMatch">* Password do not match</small>
         </div>
         <div>
-          <button class="btn">Sign Up</button>
+          <button class="btn" [disabled]="!signupForm.valid">Sign Up</button>
         </div>
         <div>
           <p>

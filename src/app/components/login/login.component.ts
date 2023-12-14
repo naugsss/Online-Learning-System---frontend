@@ -22,11 +22,8 @@ export class LoginComponent {
     const password = authForm.value.password;
     this.isLoading = true;
 
-    console.log(authForm);
-
     this.authService.login(username, password).subscribe({
       next: (response) => {
-        console.log('response', response);
         this.isLoading = false;
         this.toast.success({
           detail: 'Logged In',
@@ -35,11 +32,10 @@ export class LoginComponent {
         this.router.navigate(['/courses']);
       },
       error: (error) => {
-        console.log(error);
         this.isLoading = false;
         this.toast.error({
-          detail: 'Login failed',
-          summary: error,
+          detail: error.error.error.message,
+          summary: 'Please enter valid credentials',
         });
       },
     });

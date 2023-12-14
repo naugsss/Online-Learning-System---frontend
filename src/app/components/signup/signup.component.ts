@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  passwordMatch: boolean = false;
   constructor(
     private authService: AuthService,
     private toast: NgToastService,
@@ -19,25 +20,31 @@ export class SignupComponent {
   onSubmit(authForm: NgForm) {
     const username = authForm.value.username;
     const password = authForm.value.password;
+    const repassword = authForm.value.repassword;
     const email = authForm.value.email;
     const name = authForm.value.name;
+    const noWhitespacePattern = '/^S+$/';
 
-    this.authService.signup(email, name, username, password).subscribe({
-      next: (response) => {
-        console.log('response', response);
-        this.toast.success({
-          detail: 'SignUp successfull.',
-          summary: 'Please log in',
-        });
-        this.router.navigate(['login']);
-      },
-      error: (error) => {
-        console.log('error', error);
-        this.toast.error({
-          detail: 'SignUp failed',
-          summary: error,
-        });
-      },
-    });
+    if (password !== repassword) {
+      this.passwordMatch = true;
+    } else {
+      this.authService.signup(email, name, username, password).subscribe({
+        next: (response) => {
+          console.log('response', response);
+          this.toast.success({
+            detail: 'SignUp successfull.',
+            summary: 'Please log in',
+          });
+          this.router.navigate(['login']);
+        },
+        error: (error) => {
+          console.log('error', error);
+          this.toast.error({
+            detail: 'SignUp failed',
+            summary: error.error.error.message,
+          });
+        },
+      });
+    }
   }
 }
