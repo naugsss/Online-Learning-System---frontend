@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { tap, throwError } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
 
-import { Course } from '../components/courses/course/course.model';
+import {
+  Course,
+  CourseFaq,
+  CourseFeedback,
+} from '../components/courses/course/course.model';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +51,24 @@ export class CourseDataService {
       })
     );
   }
+
+  fetchCourseFaqs(courseName: string) {
+    const url = `http://127.0.0.1:8000/courses/${courseName}/user_faq`;
+    return this.http.get<CourseFaq[]>(url).pipe(
+      tap((response) => {
+        console.log(response);
+      })
+    );
+  }
+
+  // fetchCourseFeedbacks(courseName: string) {
+  //   const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
+  //   return this.http.get<CourseFeedback[]>(url).pipe(
+  //     tap((response) => {
+  //       console.log(response);
+  //     })
+  //   );
+  // }
 
   approveCourse(course: Course, approval_status: string) {
     return this.http

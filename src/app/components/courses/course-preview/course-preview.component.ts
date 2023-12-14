@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Course } from '../course/course.model';
+import { Course, CourseFaq, CourseFeedback } from '../course/course.model';
 import { CourseService } from '../course.service';
 import { cartService } from '../../cart/cart.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
@@ -12,6 +12,8 @@ import { CourseDataService } from 'src/app/shared/courseData.service';
 })
 export class CoursePreviewComponent {
   selectedCourse: Course;
+  faqs: CourseFaq[] = [];
+  feedback: CourseFeedback[] = [];
 
   constructor(
     private courseService: CourseService,
@@ -21,6 +23,17 @@ export class CoursePreviewComponent {
 
   ngOnInit(): void {
     this.selectedCourse = this.courseService.getSelectedCourse();
+    this.courseDataService
+      .fetchCourseFaqs(this.selectedCourse.name)
+      .subscribe((faq) => {
+        this.faqs = faq;
+      });
+
+    // this.courseDataService
+    //   .fetchCourseFeedbacks(this.selectedCourse.name)
+    //   .subscribe((feedback) => {
+    //     this.feedback = feedback;
+    //   });
   }
 
   addTocart(course: Course) {

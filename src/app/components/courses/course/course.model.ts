@@ -8,7 +8,11 @@ export class Course {
 }
 
 export class CourseFeedback {
-  constructor(public rating: number, public feedback: string) {}
+  constructor(public rating: number, public comment: string) {}
+}
+
+export class CourseFaq {
+  constructor(public question: string, public answer: string) {}
 }
 
 export class CourseStatus {
