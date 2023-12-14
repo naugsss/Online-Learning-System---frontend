@@ -1,0 +1,10 @@
+.video-container {
+  /* display: flex;
+  flex-direction: column; */
+  /* margin-top: 100px; */
+}
+
+.course-info {
+  margin-left: 50px;
+  font-size: 30px;
+}

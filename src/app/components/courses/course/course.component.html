@@ -7,14 +7,17 @@
       height="200px"
     />
     <div class="card-body">
-      <p class="card-title">{{ course.name }}</p>
-      <div class="stars">
-        <i
-          class="fa fa-star"
-          *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-          [ngClass]="{ filled: course.rating >= i + 1 }"
-        ></i>
+      <div class="card-heading">
+        <p class="card-title">{{ course.name }}</p>
+        <div class="stars">
+          <i
+            class="fa fa-star"
+            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+            [ngClass]="{ filled: course.rating >= i + 1 }"
+          ></i>
+        </div>
       </div>
+
       <p class="card-price" *ngIf="price">₹ {{ course.price }}</p>
 
       <!-- <div class="purchase-options" *ngIf="isOnCoursePage()">
