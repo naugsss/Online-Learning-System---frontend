@@ -89,8 +89,8 @@
           </form>
         </div>
 
-        <div class="faq-form">
-          <form #faqForm="ngForm" *ngIf="!isCourseDetailsVisible">
+        <div class="faq-form" *ngIf="!isCourseDetailsVisible">
+          <form #faqForm="ngForm">
             <h2>FAQ Details</h2>
             <div class="faq">
               <div *ngFor="let faq of faqs; let i = index" class="faq-item">
@@ -118,17 +118,23 @@
                     required
                   />
                 </div>
-
-                <button type="button" (click)="removeFaq(i)">Remove</button>
               </div>
-
-              <button type="button" class="btn" (click)="addFaq()">
+            </div>
+            <div class="faq-buttons">
+              <button type="button" class="add-faq-button" (click)="addFaq()">
                 Add FAQ
+              </button>
+              <button type="button" class="remove-button" (click)="removeFaq()">
+                Remove
               </button>
             </div>
 
-            <button class="btn" (click)="onBackClick()">Back</button>
-            <button class="btn" (click)="onSubmitFaq()">Submit FAQs</button>
+            <div class="submit-faq-buttons">
+              <button class="back-button" (click)="onBackClick()">Back</button>
+              <button class="submit-button" (click)="onSubmitFaq()">
+                Submit FAQs
+              </button>
+            </div>
           </form>
         </div>
 

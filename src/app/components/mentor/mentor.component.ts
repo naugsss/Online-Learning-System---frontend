@@ -55,8 +55,8 @@ export class MentorComponent {
     this.faqs.push({ question: '', answer: '' });
   }
 
-  removeFaq(index: number): void {
-    this.faqs.splice(index, 1);
+  removeFaq(): void {
+    this.faqs.splice(this.faqs.length - 1, 1);
   }
 
   onSubmitFaq(): void {

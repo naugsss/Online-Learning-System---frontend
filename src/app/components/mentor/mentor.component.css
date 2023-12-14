@@ -7,7 +7,6 @@
 
 input[type="text"],
 select {
-  width: 500px;
   padding: 12px 20px;
   display: inline-block;
   border: none;
@@ -33,8 +32,13 @@ select {
   margin-bottom: 30px;
 }
 
-.course-form {
+.course-form,
+.faq-form {
   width: 508px;
+}
+
+.course-image {
+  margin-top: 50px;
 }
 
 .form-style {
@@ -46,11 +50,10 @@ select {
 }
 
 .form-container {
+  width: 100%;
+  margin-top: 30px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 0;
-  gap: 50px;
 }
 
 .course-details {
@@ -66,6 +69,28 @@ hr {
   padding: 10px;
   width: 100%;
   margin-top: 5px;
+  color: rgba(1, 9, 20, 255);
+  font-weight: bold;
+}
+
+.faq-buttons {
+  text-align: center;
+}
+.submit-faq-buttons {
+  text-align: center;
+}
+
+.remove-button,
+.add-faq-button,
+.back-button,
+.submit-button {
+  background-color: #ffd60ae1;
+  padding: 10px;
+  width: 40%;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+  margin-right: 20px;
   color: rgba(1, 9, 20, 255);
   font-weight: bold;
 }
