@@ -41,21 +41,27 @@ select {
 }
 
 .btn {
-  background-color: #ffd60a;
+  background-color: #ffd60ae1;
   padding: 10px;
   width: 100px;
   color: rgba(1, 9, 20, 255);
   font-weight: bold;
 }
+.btn:hover {
+  background-color: #ffd60a;
+}
 
 .load-more {
   margin-top: 30px;
   border-radius: 10px;
-  background-color: #ffd60a;
+  background-color: #ffd60ae1;
   padding: 10px;
   color: rgba(1, 9, 20, 255);
   font-weight: bold;
   margin-bottom: 30px;
+}
+.load-more:hover {
+  background-color: #ffd60a;
 }
 
 .courses {
@@ -67,6 +73,7 @@ select {
   flex-wrap: wrap;
   gap: 30px;
   margin-top: 50px;
+  cursor: pointer;
 }
 
 .course {

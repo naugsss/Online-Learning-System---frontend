@@ -35,6 +35,11 @@
   font-weight: bold;
 }
 
+.btn:hover {
+  transition: 0.2s all ease;
+  background-color: #ffd60a;
+}
+
 .faq {
   margin-top: 50px;
   width: 80%;

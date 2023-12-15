@@ -37,7 +37,6 @@
             required
             #username="ngModel"
             pattern="^\S+$"
-            
           />
           <small *ngIf="username.invalid && username.touched"
             >* Username is a required property</small
@@ -54,8 +53,7 @@
             name="email"
             required
             #email="ngModel"
-            pattern="^\S+$"
-
+            pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}"
           />
           <small *ngIf="email.invalid && email.touched"
             >* Email is a required property</small
@@ -72,6 +70,7 @@
             name="password"
             required
             #password="ngModel"
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$"
           />
           <small *ngIf="password.invalid && password.touched"
             >* Password is a required property</small
@@ -88,6 +87,7 @@
             name="repassword"
             required
             #repassword="ngModel"
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$"
           />
           <small *ngIf="repassword.invalid && repassword.touched"
             >* Password is a required property</small

@@ -23,6 +23,8 @@ import { AdminMentorComponent } from './components/admin/admin-mentor/admin-ment
 import { MentorComponent } from './components/mentor/mentor.component';
 import { CoursePreviewComponent } from './components/courses/course-preview/course-preview.component';
 import { CourseContentComponent } from './components/my-learning/course-content/course-content.component';
+import { NewCourseComponent } from './components/mentor/new-course/new-course.component';
+import { AddFaqComponent } from './components/mentor/add-faq/add-faq.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { CourseContentComponent } from './components/my-learning/course-content/
     MentorComponent,
     CoursePreviewComponent,
     CourseContentComponent,
+    NewCourseComponent,
+    AddFaqComponent,
   ],
   imports: [
     BrowserModule,

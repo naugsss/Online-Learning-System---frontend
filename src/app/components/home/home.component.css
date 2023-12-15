@@ -86,6 +86,12 @@ hr {
   border-radius: 10px;
 }
 
+.explore:hover {
+  transition: 0.2s all ease;
+
+  background-color: #ffd60a;
+}
+
 .courses-feedback {
   margin: 30px 0;
   display: flex;

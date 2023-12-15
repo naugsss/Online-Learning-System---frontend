@@ -33,6 +33,10 @@ label {
   font-weight: bold;
 }
 
+.btn:hover {
+  background-color: #ffd60a;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],

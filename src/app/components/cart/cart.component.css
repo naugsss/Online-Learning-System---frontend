@@ -97,6 +97,9 @@ h2 {
   margin-right: 25px;
   margin-top: 25px;
 }
+.btn:hover {
+  background-color: #ffd60a;
+}
 
 .cart-button {
   margin-right: 50px;

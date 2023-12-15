@@ -28,9 +28,14 @@ button {
   border-radius: 5px;
 }
 
+.approve:hover {
+  transition: 0.2s all ease;
+
+  background-color: #ffd60a;
+}
+
 .reject,
 .disable {
-  background-color: rgba(255, 214, 10, 0.882);
   padding: 7px 12px;
   color: rgba(1, 9, 20, 255);
   border: none;
@@ -38,6 +43,17 @@ button {
   font-weight: 500;
   border-radius: 5px;
   margin-left: 25px;
+}
+
+.reject,
+.disable {
+  background-color: #e56b6f;
+}
+
+.reject:hover,
+.disable:hover {
+  transition: 0.2s all ease;
+  background-color: #e6454a;
 }
 
 .request-container {
