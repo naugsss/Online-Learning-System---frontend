@@ -15,43 +15,50 @@
     </div>
   </div>
 
-  <div class="cards-container" *ngIf="cart.length > 0">
-    <div class="cards">
-      <div class="card" *ngFor="let course of cart; let j = index">
-        <div class="card-img">
-          <img
-            class="card-img-top"
-            src="../../../assets/courses/onlinecourse2.webp"
-            alt="Card image cap"
-            height="250px"
-          />
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">{{ course.name }}</h4>
-          <p class="card-text">₹ {{ course.price }}</p>
-          <div class="stars">
-            <i
-              class="fa fa-star"
-              *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-              [ngClass]="{ filled: course.rating >= i + 1 }"
-            ></i>
+  <div class="course-cards" *ngIf="cart.length > 0">
+    <div class="cards-container">
+      <h2>Courses ({{ cart.length }})</h2>
+      <hr />
+      <div class="cards">
+        <div class="card" *ngFor="let course of cart; let j = index">
+          <div class="card-img">
+            <img
+              class="card-img-top"
+              src="../../../assets/courses/onlinecourse2.webp"
+              alt="Card image cap"
+              height="150px"
+            />
+          </div>
+
+          <div class="card-body">
+            <h3 class="card-title">{{ course.name }}</h3>
+            <p class="card-price">₹ {{ course.price }}</p>
+            <div class="stars">
+              <i
+                class="fa fa-star"
+                *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                [ngClass]="{ filled: course.rating >= i + 1 }"
+              ></i>
+            </div>
           </div>
           <div class="cart-button">
             <button class="btn" (click)="onBuyNowClick(course)">Buy Now</button>
             <button class="btn" (click)="onRemoveClick(course.name)">
-              Remove
+              <i class="fa-solid fa-trash"></i> Remove
             </button>
           </div>
         </div>
       </div>
     </div>
+
     <div class="total-price">
       <h3 class="price-heading">Price Details</h3>
-      <ul class="course-price">
-        <li *ngFor="let course of cart">
-          {{ course.name }} - ₹ {{ course.price }}
-        </li>
-      </ul>
+      <div class="courses-price">
+        <p class="course-price" *ngFor="let course of cart">
+          {{ course.name }}
+          <span class="">₹ {{ course.price }}</span>
+        </p>
+      </div>
       <h3 class="price-total">Subtotal: ₹ {{ calculateSubtotalPrice() }}</h3>
     </div>
   </div>
