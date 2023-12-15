@@ -12,7 +12,6 @@ import { Course } from './course/course.model';
 import { CourseService } from './course.service';
 import { FilterService } from './course-filter/filter.service';
 import { CourseFilterComponent } from './course-filter/course-filter.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -36,8 +35,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   constructor(
     private courseService: CourseService,
     private courseDataService: CourseDataService,
-    private filterService: FilterService,
-    private router: Router
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {

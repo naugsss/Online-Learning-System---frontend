@@ -23,7 +23,7 @@ export class AddFaqComponent {
     this.faqs.splice(this.faqs.length - 1, 1);
   }
   onSubmitFaq(): void {
-    this.faqs = [];
+    this.faqs = [{ question: '', answer: '' }];
     // this.isCourseDetailsVisible = true;
   }
 }

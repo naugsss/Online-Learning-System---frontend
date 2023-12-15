@@ -26,6 +26,7 @@ import { CourseContentComponent } from './components/my-learning/course-content/
 import { NewCourseComponent } from './components/mentor/new-course/new-course.component';
 import { AddFaqComponent } from './components/mentor/add-faq/add-faq.component';
 import { CapitalizePipe } from './components/courses/capitalize.pipe';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CapitalizePipe } from './components/courses/capitalize.pipe';
     CourseContentComponent,
     NewCourseComponent,
     AddFaqComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

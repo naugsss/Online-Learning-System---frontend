@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
@@ -13,8 +13,6 @@ import { Course } from '../courses/course/course.model';
 export class MyLearningComponent implements OnInit {
   courses: Course[] = [];
   subscription: Subscription;
-
-
 
   constructor(
     private courseDataService: CourseDataService,

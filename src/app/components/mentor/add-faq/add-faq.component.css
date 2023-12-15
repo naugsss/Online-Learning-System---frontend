@@ -1,3 +1,6 @@
+.faq-form {
+  width: 500px;
+}
 input[type="text"],
 select {
   padding: 12px 20px;
@@ -8,6 +11,16 @@ select {
   box-sizing: border-box;
   background-color: #161d29;
   border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.faq-buttons,
+.submit-faq-buttons {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
 }
 
 .remove-button,
@@ -15,11 +28,22 @@ select {
 .submit-button {
   background-color: #ffd60ae1;
   padding: 10px;
-  width: 40%;
+  width: 30%;
   border-radius: 5px;
   border: none;
   margin-top: 5px;
   margin-right: 20px;
   color: rgba(1, 9, 20, 255);
   font-weight: bold;
+}
+
+.form-style {
+  width: 100%;
+}
+
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+}
+small {
+  color: red;
 }

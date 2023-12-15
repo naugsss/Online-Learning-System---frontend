@@ -1,6 +1,8 @@
-.course-details {
+.course-form {
+  width: 500px;
 }
 input[type="text"],
+input[type="number"],
 select {
   padding: 12px 20px;
   display: block;
@@ -9,12 +11,32 @@ select {
   box-sizing: border-box;
   background-color: #161d29;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .btn {
   background-color: #ffd60ae1;
   padding: 10px;
+  width: 30%;
+
   margin-top: 5px;
   color: rgba(1, 9, 20, 255);
   font-weight: bold;
+}
+
+.form-style {
+  width: 100%;
+}
+
+.add-course {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input.ng-invalid.ng-touched {
+  border: red 1px solid;
+}
+small {
+  color: red;
 }

@@ -11,30 +11,46 @@
           id="name"
           name="name"
           ngModel
+          required
+          pattern="^\S+$"
+          #name="ngModel"
         />
+        <small *ngIf="name.invalid && name.touched"
+          >* Course name is a required property</small
+        >
       </div>
 
       <div>
         <label for="price">Price</label>
         <input
-          type="text"
+          type="number"
           placeholder="Enter price of course"
           id="price"
           class="form-style"
           name="price"
           ngModel
+          required
+          #price="ngModel"
         />
+        <small *ngIf="price.invalid && price.touched"
+          >* Course price is a required property</small
+        >
       </div>
       <div>
         <label for="duration">Duration</label>
         <input
-          type="text"
-          placeholder="Enter duration of course"
+          type="number"
+          placeholder="Enter duration of course in hrs"
           id="duration"
           class="form-style"
           name="duration"
           ngModel
+          required
+          #duration="ngModel"
         />
+        <small *ngIf="duration.invalid && duration.touched"
+          >* Course duration is a required property</small
+        >
       </div>
 
       <div>
@@ -46,10 +62,16 @@
           class="form-style"
           name="video"
           ngModel
+          required
+          #link="ngModel"
         />
+        <small *ngIf="link.invalid && link.touched"
+          >* Video link is a required property</small
+        >
       </div>
     </div>
-
-    <button class="btn">Add Course</button>
+    <div class="add-course">
+      <button class="btn" [disabled]="!courseForm.valid">Add Course</button>
+    </div>
   </form>
 </div>

@@ -1,14 +1,23 @@
 <div class="faq-form">
   <form #faqForm="ngForm">
     <h2>FAQ Details</h2>
+
     <div class="faq">
       <div>
         <label for="course-name">Course name</label>
         <input
           type="text"
+          class="form-style"
           placeholder="Enter the name of the course"
           id="course-name"
+          name="course-name"
+          ngModel
+          required
+          #courseName="ngModel"
         />
+        <small *ngIf="courseName.invalid && courseName.touched"
+          >* Course name is a required property</small
+        >
       </div>
 
       <div *ngFor="let faq of faqs; let i = index" class="faq-item">
@@ -22,7 +31,11 @@
             placeholder="Question"
             [(ngModel)]="faqs[i].question"
             required
+            #question="ngModel"
           />
+          <small *ngIf="question.invalid && question.touched"
+            >* Question is a required property</small
+          >
         </div>
         <div>
           <label for="answer-{{ i }}">Answer</label>
@@ -34,10 +47,15 @@
             placeholder="Answer"
             [(ngModel)]="faqs[i].answer"
             required
+            #answer="ngModel"
           />
+          <small *ngIf="answer.invalid && answer.touched"
+            >* Answer is a required property</small
+          >
         </div>
       </div>
     </div>
+
     <div class="faq-buttons">
       <button type="button" class="add-faq-button" (click)="addFaq()">
         Add FAQ
@@ -48,7 +66,13 @@
     </div>
 
     <div class="submit-faq-buttons">
-      <button class="submit-button" (click)="onSubmitFaq()">Submit FAQs</button>
+      <button
+        class="submit-button"
+        (click)="onSubmitFaq()"
+        [disabled]="!faqForm.valid"
+      >
+        Submit
+      </button>
     </div>
   </form>
 </div>

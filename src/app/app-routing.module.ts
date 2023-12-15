@@ -12,6 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { MentorComponent } from './components/mentor/mentor.component';
 import { CoursePreviewComponent } from './components/courses/course-preview/course-preview.component';
 import { CourseContentComponent } from './components/my-learning/course-content/course-content.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'myLearning/:courseName',
     component: CourseContentComponent,
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 
