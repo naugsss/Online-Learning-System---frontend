@@ -40,6 +40,16 @@
   background-color: #ffd60a;
 }
 
+.fa-star {
+  color: #ddd;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.fa-star.filled {
+  color: #f1c40f;
+}
+
 .faq {
   margin-top: 50px;
   width: 80%;
@@ -59,8 +69,15 @@
   color: white;
 }
 
+.accordion-button:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
 .accordion-button {
   font-size: 20px;
+}
+
+.accordion-button:hover {
+  background-color: #161d29;
 }
 
 .feedback-section {

@@ -25,7 +25,6 @@ export class CourseComponent {
 
   cardClick() {
     this.courseService.setSelectedCourse(this.course);
-    // console.log(this.router.url);
     if (this.router.url === '/courses') {
       this.router.navigate(['/courses', this.course.name]);
     } else if (this.router.url === '/myLearning') {

@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { CourseDataService } from 'src/app/shared/courseData.service';
 
 @Component({
   selector: 'app-new-course',
   templateUrl: './new-course.component.html',
-  styleUrls: ['./new-course.component.css']
+  styleUrls: ['./new-course.component.css'],
 })
 export class NewCourseComponent {
+  constructor(private courseDataService: CourseDataService) {}
+  @ViewChild('courseForm') form: NgForm;
 
+  onSubmit(): void {
+    const courseData = {
+      name: this.form.value.name,
+      price: +this.form.value.price,
+      duration: +this.form.value.duration,
+      video: this.form.value.video,
+    };
+    console.log(courseData);
+    this.courseDataService.addCourse(courseData);
+    this.form.reset();
+  }
 }

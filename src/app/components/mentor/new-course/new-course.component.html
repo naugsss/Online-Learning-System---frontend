@@ -1,1 +1,55 @@
-<p>new-course works!</p>
+<div class="course-form">
+  <form class="course-details" #courseForm="ngForm" (ngSubmit)="onSubmit()">
+    <h2>Course Details</h2>
+    <div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          class="form-style"
+          type="text"
+          placeholder="Enter course name"
+          id="name"
+          name="name"
+          ngModel
+        />
+      </div>
+
+      <div>
+        <label for="price">Price</label>
+        <input
+          type="text"
+          placeholder="Enter price of course"
+          id="price"
+          class="form-style"
+          name="price"
+          ngModel
+        />
+      </div>
+      <div>
+        <label for="duration">Duration</label>
+        <input
+          type="text"
+          placeholder="Enter duration of course"
+          id="duration"
+          class="form-style"
+          name="duration"
+          ngModel
+        />
+      </div>
+
+      <div>
+        <label for="video">Video Link</label>
+        <input
+          type="text"
+          placeholder="Enter video link"
+          id="video"
+          class="form-style"
+          name="video"
+          ngModel
+        />
+      </div>
+    </div>
+
+    <button class="btn">Add Course</button>
+  </form>
+</div>

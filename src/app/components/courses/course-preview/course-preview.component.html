@@ -6,13 +6,15 @@
       height="250px"
     />
     <div class="course-details">
-      <p class="course-heading">{{ selectedCourse.name }}</p>
+      <p class="course-heading">{{ selectedCourse.name | capitalize }}</p>
       <div class="stars">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
+        <div class="stars">
+          <i
+            class="fa fa-star"
+            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+            [ngClass]="{ filled: selectedCourse.rating >= i + 1 }"
+          ></i>
+        </div>
       </div>
       <p class="course-price">₹ {{ selectedCourse.price }}</p>
       <div class="purchase-options">

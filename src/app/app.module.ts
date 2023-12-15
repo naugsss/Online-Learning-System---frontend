@@ -25,9 +25,11 @@ import { CoursePreviewComponent } from './components/courses/course-preview/cour
 import { CourseContentComponent } from './components/my-learning/course-content/course-content.component';
 import { NewCourseComponent } from './components/mentor/new-course/new-course.component';
 import { AddFaqComponent } from './components/mentor/add-faq/add-faq.component';
+import { CapitalizePipe } from './components/courses/capitalize.pipe';
 
 @NgModule({
   declarations: [
+    CapitalizePipe,
     AppComponent,
     HeaderComponent,
     LoginComponent,

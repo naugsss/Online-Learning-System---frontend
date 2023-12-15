@@ -1,1 +1,54 @@
-<p>add-faq works!</p>
+<div class="faq-form">
+  <form #faqForm="ngForm">
+    <h2>FAQ Details</h2>
+    <div class="faq">
+      <div>
+        <label for="course-name">Course name</label>
+        <input
+          type="text"
+          placeholder="Enter the name of the course"
+          id="course-name"
+        />
+      </div>
+
+      <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+        <div class="form-group">
+          <label for="question-{{ i }}">Question</label>
+          <input
+            type="text"
+            id="question-{{ i }}"
+            name="question"
+            class="form-style"
+            placeholder="Question"
+            [(ngModel)]="faqs[i].question"
+            required
+          />
+        </div>
+        <div>
+          <label for="answer-{{ i }}">Answer</label>
+          <input
+            type="text"
+            name="answer"
+            id="answer-{{ i }}"
+            class="form-style"
+            placeholder="Answer"
+            [(ngModel)]="faqs[i].answer"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="faq-buttons">
+      <button type="button" class="add-faq-button" (click)="addFaq()">
+        Add FAQ
+      </button>
+      <button type="button" class="remove-button" (click)="removeFaq()">
+        Remove
+      </button>
+    </div>
+
+    <div class="submit-faq-buttons">
+      <button class="submit-button" (click)="onSubmitFaq()">Submit FAQs</button>
+    </div>
+  </form>
+</div>

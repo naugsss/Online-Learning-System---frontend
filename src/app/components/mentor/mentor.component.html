@@ -24,127 +24,45 @@
       </tr>
     </table>
   </div>
+
   <div class="add-course">
     <div class="add-new-course">
       <h1>Add a new course</h1>
       <hr />
       <div class="form-container">
-        <div class="course-form" *ngIf="isCourseDetailsVisible">
-          <form
-            class="course-details"
-            #courseForm="ngForm"
-            (ngSubmit)="onSubmit()"
+        <div class="heading">
+          <button
+            class="add-course-btn active"
+            (click)="addCourseButtonClicked()"
+            [ngClass]="{ active: changeComponent }"
           >
-            <h2>Course Details</h2>
-            <div>
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                  class="form-style"
-                  type="text"
-                  placeholder="Enter course name"
-                  id="name"
-                  name="name"
-                  ngModel
-                />
-              </div>
-
-              <div>
-                <label for="price">Price</label>
-                <input
-                  type="text"
-                  placeholder="Enter price of course"
-                  id="price"
-                  class="form-style"
-                  name="price"
-                  ngModel
-                />
-              </div>
-              <div>
-                <label for="duration">Duration</label>
-                <input
-                  type="text"
-                  placeholder="Enter duration of course"
-                  id="duration"
-                  class="form-style"
-                  name="duration"
-                  ngModel
-                />
-              </div>
-
-              <div>
-                <label for="video">Video Link</label>
-                <input
-                  type="text"
-                  placeholder="Enter video link"
-                  id="video"
-                  class="form-style"
-                  name="video"
-                  ngModel
-                />
-              </div>
-            </div>
-
-            <button class="btn">Add Course</button>
-          </form>
+            Courses
+          </button>
+          <button
+            class="add-faq-btn"
+            (click)="addFaqButtonClicked()"
+            [ngClass]="{ active: changeComponent === false }"
+          >
+            Mentor
+          </button>
         </div>
 
-        <div class="faq-form" *ngIf="!isCourseDetailsVisible">
-          <form #faqForm="ngForm">
-            <h2>FAQ Details</h2>
-            <div class="faq">
-              <div *ngFor="let faq of faqs; let i = index" class="faq-item">
-                <div class="form-group">
-                  <label for="question-{{ i }}">Question</label>
-                  <input
-                    type="text"
-                    id="question-{{ i }}"
-                    name="question"
-                    class="form-style"
-                    placeholder="Question"
-                    [(ngModel)]="faqs[i].question"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="answer-{{ i }}">Answer</label>
-                  <input
-                    type="text"
-                    name="answer"
-                    id="answer-{{ i }}"
-                    class="form-style"
-                    placeholder="Answer"
-                    [(ngModel)]="faqs[i].answer"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="faq-buttons">
-              <button type="button" class="add-faq-button" (click)="addFaq()">
-                Add FAQ
-              </button>
-              <button type="button" class="remove-button" (click)="removeFaq()">
-                Remove
-              </button>
-            </div>
+        <div class="details-container">
+          <div class="new-course" *ngIf="changeComponent">
+            <app-new-course></app-new-course>
+          </div>
+          <div class="add-faq" *ngIf="!changeComponent">
+            <app-add-faq></app-add-faq>
+          </div>
 
-            <div class="submit-faq-buttons">
-              <button class="back-button" (click)="onBackClick()">Back</button>
-              <button class="submit-button" (click)="onSubmitFaq()">
-                Submit FAQs
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div class="course-image">
-          <img
-            src="../../../assets/courses/new-course.svg"
-            alt="couldn't preview image"
-            height="400px"
-            width="550px"
-          />
+          <div class="course-image">
+            <img
+              src="../../../assets/courses/new-course.svg"
+              alt="couldn't preview image"
+              height="400px"
+              width="550px"
+            />
+          </div>
         </div>
       </div>
     </div>
