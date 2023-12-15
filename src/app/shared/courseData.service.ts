@@ -61,14 +61,14 @@ export class CourseDataService {
     );
   }
 
-  // fetchCourseFeedbacks(courseName: string) {
-  //   const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
-  //   return this.http.get<CourseFeedback[]>(url).pipe(
-  //     tap((response) => {
-  //       console.log(response);
-  //     })
-  //   );
-  // }
+  fetchCourseFeedbacks(courseName: string) {
+    const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
+    return this.http.get<CourseFeedback[]>(url).pipe(
+      tap((response) => {
+        console.log(response);
+      })
+    );
+  }
 
   approveCourse(course: Course, approval_status: string) {
     return this.http

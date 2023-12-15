@@ -29,11 +29,11 @@ export class CoursePreviewComponent {
         this.faqs = faq;
       });
 
-    // this.courseDataService
-    //   .fetchCourseFeedbacks(this.selectedCourse.name)
-    //   .subscribe((feedback) => {
-    //     this.feedback = feedback;
-    //   });
+    this.courseDataService
+      .fetchCourseFeedbacks(this.selectedCourse.name)
+      .subscribe((feedback) => {
+        this.feedback = feedback;
+      });
   }
 
   addTocart(course: Course) {

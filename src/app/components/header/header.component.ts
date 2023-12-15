@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
+
 import { AuthService } from 'src/app/services/auth.service';
 import { cartService } from '../cart/cart.service';
 
@@ -12,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   showProfileOptions = false;
   cartItemNumber = 0;
+  userData = {};
   private userSub: Subscription;
 
   constructor(
@@ -31,6 +34,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (localStorage.getItem('userData')) {
       this.isAuthenticated = true;
     }
+
+
+
   }
   toggleProfileOptions() {
     this.showProfileOptions = !this.showProfileOptions;

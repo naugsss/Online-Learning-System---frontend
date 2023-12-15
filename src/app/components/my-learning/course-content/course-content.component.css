@@ -6,11 +6,15 @@
   flex-direction: column;
   margin-left: 60px;
   margin-top: 30px;
+  width: 70%;
 }
 
 .sidebar {
+  position: fixed;
+  overflow-y: scroll;
+  right: 0;
   width: 30%;
-  height: 100vh;
+  height: 70%;
 }
 
 .course-info {
@@ -20,6 +24,7 @@
 
 .course-lectures {
   background-color: #161d29;
+  /* background-color: transparent; */
 }
 
 .lecture {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 
 import { User } from '../components/login/user.model';
