@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, tap, throwError } from 'rxjs';
+import { Subject, tap } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
 
 import {
@@ -9,12 +9,14 @@ import {
   CourseFeedback,
   CourseStatus,
 } from '../components/courses/course/course.model';
+import { Faq } from '../components/mentor/add-faq/add-faq.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseDataService {
-  updateCourseList = new Subject<boolean>();
+  updateCourseList = new Subject<Course>();
+  disableCourseList = new Subject<Course>();
 
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
@@ -55,7 +57,7 @@ export class CourseDataService {
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_faq`;
     return this.http.get<CourseFaq[]>(url).pipe(
       tap((response) => {
-        console.log(response);
+        // console.log(response);
       })
     );
   }
@@ -64,14 +66,27 @@ export class CourseDataService {
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
     return this.http.get<CourseFeedback[]>(url).pipe(
       tap((response) => {
-        console.log(response);
+        // console.log(response);
       })
     );
   }
 
-  disableCourse(courseName: string) {
-    const url = `http://127.0.0.1:8000/courses/${courseName}`;
-    return this.http.put(url, {});
+  disableCourse(course: Course) {
+    const url = `http://127.0.0.1:8000/courses/${course.name}`;
+    return this.http.put(url, {}).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.disableCourseList.next(course);
+        if (
+          response['message'] === 'Course marked as deactivated successfully'
+        ) {
+          this.toast.info({
+            detail: response['message'],
+            summary: 'Now course is not available for purchase',
+          });
+        }
+      },
+    });
   }
 
   approveCourse(course: Course, approval_status: string) {
@@ -82,7 +97,7 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          this.updateCourseList.next(true);
+          this.updateCourseList.next(course);
           console.log(response);
 
           if (response['message'] === 'Course approved successfully') {
@@ -133,6 +148,27 @@ export class CourseDataService {
       });
   }
 
+  addFaq(faq: Faq, courseName: string) {
+    const url = `http://127.0.0.1:8000/courses/${courseName}/user_faq`;
+
+    this.http
+      .post(url, {
+        question: faq.question,
+        answer: faq.answer,
+      })
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          if (response['message'] === 'FAQ added successfully') {
+            this.toast.success({
+              detail: 'Success!',
+              summary: response['message'],
+            });
+          }
+        },
+      });
+  }
+
   addCourse(courseData: any) {
     this.http
       .post('http://127.0.0.1:8000/courses/', {
@@ -176,7 +212,6 @@ export class CourseDataService {
       .post('http://127.0.0.1:8000/courses/' + course.name, {}, {})
       .subscribe({
         next: (response) => {
-          console.log(response['message']);
           if (response['message'] === "You've already purchased this course.") {
             this.toast.info({
               detail: 'Course already purchased',
@@ -198,6 +233,4 @@ export class CourseDataService {
         },
       });
   }
-
-  // add new course
 }

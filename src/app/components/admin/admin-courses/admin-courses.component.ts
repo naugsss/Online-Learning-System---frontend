@@ -22,7 +22,6 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
     private courseService: CourseService
   ) {}
 
-  private courseUpdatedSubject = new Subject<Course>();
   private courseDisabledSubject = new Subject<CourseStatus[]>();
 
   ngOnInit(): void {
@@ -31,7 +30,7 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
     });
     this.courseDataService.fetchCourses().subscribe((courses) => {
       this.allCourses = courses;
-      console.log(this.allCourses);
+      // console.log(this.allCourses);
     });
 
     this.courseDisabledSubject.subscribe();
@@ -42,11 +41,28 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
         this.allCourses = this.courseService.getAllCourses();
       }
     );
+    this.subscription = this.courseDataService.updateCourseList.subscribe(
+      (courses) => {
+        this.filterCourse(courses);
+      }
+    );
+    this.subscription = this.courseDataService.disableCourseList.subscribe(
+      (course) => {
+        this.allCourses = this.courseService.getAllCourses();
+      }
+    );
     window.addEventListener('scroll', () => {
       if (this.isAtTableBottom()) {
         this.loadMoreCourses();
       }
     });
+  }
+
+  filterCourse(courses: Course) {
+    this.courses = this.courses.filter(
+      (course) => course.name !== courses.name
+    );
+    // console.log(this.courses);
   }
 
   approveCourse(course: Course) {
@@ -55,11 +71,10 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
 
   rejectCourse(course: Course) {
     this.courseDataService.approveCourse(course, 'reject');
-    this.courseUpdatedSubject.next(course);
   }
 
   disableCourse(course: Course) {
-    this.courseDataService.disableCourse(course.name).subscribe(() => {});
+    this.courseDataService.disableCourse(course);
 
     this.courseDataService.fetchCourses().subscribe((courses) => {
       this.allCourses = courses;

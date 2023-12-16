@@ -42,6 +42,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.courseDataService.fetchCourses().subscribe((courses) => {
       this.courseService.setAllCourses(courses);
       this.filteredCourse = courses;
+      console.log(this.filteredCourse);
     });
     // this.fetchCourses(this.currentPage, this.pageSize);
     // this.courseService.fetchCourses(this.currentPage, this.pageSize); // Fetch first page
