@@ -1,27 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap, throwError } from 'rxjs';
+import { Subject, tap, throwError } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
 
 import {
   Course,
   CourseFaq,
   CourseFeedback,
+  CourseStatus,
 } from '../components/courses/course/course.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseDataService {
+  updateCourseList = new Subject<boolean>();
+
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
   fetchCourses(page: number = 1, size: number = 6) {
     const url = `http://127.0.0.1:8000/courses?page=${page}&size=${size}`;
-    return this.http.get<Course[]>(url).pipe(
-      tap((response) => {
-        console.log(response);
-      })
-    );
+    return this.http.get<CourseStatus[]>(url);
   }
 
   fetchPurchasedCoures() {
@@ -70,6 +69,11 @@ export class CourseDataService {
     );
   }
 
+  disableCourse(courseName: string) {
+    const url = `http://127.0.0.1:8000/courses/${courseName}`;
+    return this.http.put(url, {});
+  }
+
   approveCourse(course: Course, approval_status: string) {
     return this.http
       .put('http://127.0.0.1:8000/courses', {
@@ -78,6 +82,7 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
+          this.updateCourseList.next(true);
           console.log(response);
 
           if (response['message'] === 'Course approved successfully') {

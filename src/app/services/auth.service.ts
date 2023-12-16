@@ -93,8 +93,8 @@ export class AuthService {
 
   handleLogin(response: any) {
     const jwt_token = response['access_token'];
-    const decodedToken: loginResponse = jwtDecode(jwt_token, { header: true });
-
+    // const decodedToken: loginResponse = jwtDecode(jwt_token, { header: true });
+    const decodedToken: loginResponse = jwtDecode(jwt_token);
     const role = decodedToken['role'];
     const username = decodedToken['username'];
     const user = new User(username, role, jwt_token);

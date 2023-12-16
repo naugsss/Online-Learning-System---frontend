@@ -13,6 +13,8 @@ import { MentorComponent } from './components/mentor/mentor.component';
 import { CoursePreviewComponent } from './components/courses/course-preview/course-preview.component';
 import { CourseContentComponent } from './components/my-learning/course-content/course-content.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AdminGuard } from './services/admin.guard';
+import { MentorGuard } from './services/mentor.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,13 +30,12 @@ const routes: Routes = [
     component: CoursePreviewComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'admin', component: AdminComponent },
-  { path: 'mentor', component: MentorComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'mentor', component: MentorComponent, canActivate: [MentorGuard] },
   { path: 'cart', component: CartComponent },
   {
     path: 'myLearning',
     component: MyLearningComponent,
-    // canActivate: [AuthGuard],
   },
   {
     path: 'myLearning/:courseName',

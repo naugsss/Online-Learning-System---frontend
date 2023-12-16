@@ -27,7 +27,9 @@
               <button class="approve" (click)="approveCourse(course)">
                 Approve
               </button>
-              <button class="reject" (click)="rejectCourse(course)" >Reject</button>
+              <button class="reject" (click)="rejectCourse(course)">
+                Reject
+              </button>
             </div>
           </td>
         </tr>
@@ -59,7 +61,9 @@
         <td>₹ {{ course.price }}</td>
         <td>
           <div class="approval-options">
-            <button class="disable">Disable</button>
+            <button class="disable" (click)="disableCourse(course)">
+              Disable
+            </button>
           </div>
         </td>
       </tr>

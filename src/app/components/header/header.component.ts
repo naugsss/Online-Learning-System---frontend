@@ -14,7 +14,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   showProfileOptions = false;
   cartItemNumber = 0;
-  userData = {};
+  userRole = 4;
+  isAdmin: boolean = false;
+  isMentor: boolean = false;
+  // userData = {};
   private userSub: Subscription;
 
   constructor(
@@ -22,21 +25,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private cartService: cartService
   ) {}
   ngOnInit(): void {
-    console.log('header component initialized');
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
+      if (user) {
+        this.isAdmin = user.role === 1;
+        this.isMentor = user.role === 3;
+      }
     });
 
     this.cartService.getCartItemNumber().subscribe((count) => {
       this.cartItemNumber = count;
     });
 
-    if (localStorage.getItem('userData')) {
-      this.isAuthenticated = true;
-    }
-
-
-
+    // const userDataString = JSON.parse(localStorage.getItem('userData'));
+    // console.log('user datastring');
+    // console.log(userDataString);
+    // if (userDataString) {
+    //   this.isAuthenticated = true;
+    //   if (userDataString.role === 1) {
+    //     this.isAdmin = true;
+    //   } else if (userDataString.role === 3) {
+    //     this.isMentor = true;
+    //   }
+    // }
   }
   toggleProfileOptions() {
     this.showProfileOptions = !this.showProfileOptions;

@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Course } from '../../courses/course/course.model';
+import { Course, CourseStatus } from '../../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { CourseService } from '../../courses/course.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-courses',
@@ -13,17 +13,28 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
   courses: Course[] = [];
   subscription: Subscription;
   allCourses: Course[] = [];
+  anotherSubscription: Subscription;
   courseButton: boolean = true;
+  currentPage: number = 1;
 
   constructor(
     private courseDataService: CourseDataService,
     private courseService: CourseService
   ) {}
 
+  private courseUpdatedSubject = new Subject<Course>();
+  private courseDisabledSubject = new Subject<CourseStatus[]>();
+
   ngOnInit(): void {
-    this.courseDataService.fetchPendingCourseReqeust().subscribe((courses) => {
-      this.courseService.setPendingCourses(courses);
+    this.courseDataService.fetchPendingCourseReqeust().subscribe((approved) => {
+      this.courseService.setPendingCourses(approved);
     });
+    this.courseDataService.fetchCourses().subscribe((courses) => {
+      this.allCourses = courses;
+      console.log(this.allCourses);
+    });
+
+    this.courseDisabledSubject.subscribe();
 
     this.subscription = this.courseService.coursesList.subscribe(
       (courses: Course[]): void => {
@@ -31,18 +42,47 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
         this.allCourses = this.courseService.getAllCourses();
       }
     );
+    window.addEventListener('scroll', () => {
+      if (this.isAtTableBottom()) {
+        this.loadMoreCourses();
+      }
+    });
   }
 
   approveCourse(course: Course) {
-    console.log(course);
     this.courseDataService.approveCourse(course, 'approve');
   }
+
   rejectCourse(course: Course) {
-    console.log(course);
     this.courseDataService.approveCourse(course, 'reject');
+    this.courseUpdatedSubject.next(course);
+  }
+
+  disableCourse(course: Course) {
+    this.courseDataService.disableCourse(course.name).subscribe(() => {});
+
+    this.courseDataService.fetchCourses().subscribe((courses) => {
+      this.allCourses = courses;
+    });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private loadMoreCourses(): void {
+    this.currentPage++;
+    this.courseDataService
+      .fetchCourses(this.currentPage, 6)
+      .subscribe((courses) => {
+        this.allCourses = this.allCourses.concat(courses);
+      });
+  }
+
+  private isAtTableBottom(): boolean {
+    const scrollTop = document.documentElement.scrollTop;
+    const elementHeight = document.documentElement.clientHeight;
+    const totalHeight = document.documentElement.scrollHeight;
+    return scrollTop + elementHeight >= totalHeight - 100;
   }
 }

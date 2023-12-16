@@ -108,10 +108,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.updateCourses();
   }
 
-  onSearchClick() {
-    this.updateCourses();
-  }
-
   // onCardClick(course: Course): void {
   //   this.selectedCourse = course;
   //   console.log(this.selectedCourse);

@@ -12,20 +12,9 @@ export class CourseService {
   private selectedCourse: Course;
   constructor(private courseDataService: CourseDataService) {}
 
-  private allCourses: Course[] = [];
+  allCourses: Course[] = [];
   private pendingCourses: Course[] = [];
   private purchasedCourses: Course[] = [];
-
-  // setCourses(course: Course[]) {
-  //   this.courses = course;
-  //   console.log(this.courses);
-  //   this.coursesList.next(this.courses.slice());
-  // }
-
-  // setAllCourses(course: Course[]) {
-  //   this.allCourses = course;
-  //   this.coursesList.next(this.allCourses.slice());
-  // }
 
   fetchCourses(page: number, size: number) {
     this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
@@ -35,14 +24,9 @@ export class CourseService {
   }
 
   setAllCourses(course: Course[]) {
-    console.log(course);
     if (!this.allCourses.length) {
       this.allCourses = course;
     }
-    // else {
-    //   // this.allCourses = [...this.allCourses, ...course];
-    //   console.log(this.allCourses);
-    // }
     this.coursesList.next(this.allCourses.slice());
   }
 
@@ -57,10 +41,6 @@ export class CourseService {
   getSelectedCourse(): Course | null {
     return this.selectedCourse;
   }
-
-  // getCourses(): Course[] {
-  //   return this.coursesList.asObservable();
-  // }
 
   setPendingCourses(course: Course[]) {
     this.pendingCourses = course;

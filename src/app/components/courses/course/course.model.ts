@@ -17,8 +17,11 @@ export class CourseFaq {
 
 export class CourseStatus {
   constructor(
-    public course_name: string,
+    public name: string,
     public status: string,
-    public approval_status: string
+    public approval_status: string,
+    public price: number,
+    public duration: number,
+    public rating: number
   ) {}
 }
