@@ -5,6 +5,20 @@
   /* height: 100%; */
 }
 
+.no-earning {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
+}
+.subheading {
+  margin-top: 30px;
+  font-size: 35px;
+}
+
 /* input[type="text"],
 select {
   padding: 12px 20px;

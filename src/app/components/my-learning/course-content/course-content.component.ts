@@ -63,13 +63,13 @@ export class CourseContentComponent implements OnInit {
   }
 
   submitFeedback(): void {
-    this.selectedRating = 0;
-    this.feedbackText = '';
-
     this.courseDataService.addFeedback(
       this.course.name,
       this.feedbackText,
       this.selectedRating
     );
+
+    this.selectedRating = 0;
+    this.feedbackText = '';
   }
 }

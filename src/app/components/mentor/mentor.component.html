@@ -2,7 +2,21 @@
   <div class="mentor-earning">
     <h1>My Earnings</h1>
     <hr />
-    <table class="table">
+
+    <div class="no-earning">
+      <div *ngIf="mentorEarnings.length === 0">
+        <img
+          class="no-earning-image"
+          src="../../../assets/mentor/no-earning2.svg"
+          height="300px"
+        />
+        <p class="subheading">
+          Your haven't made any course till now, please add a course to earn.
+        </p>
+      </div>
+    </div>
+
+    <table class="table" *ngIf="mentorEarnings.length > 0">
       <tr>
         <th>Name</th>
         <th>Course</th>

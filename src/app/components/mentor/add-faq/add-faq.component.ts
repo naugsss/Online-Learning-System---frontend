@@ -34,6 +34,6 @@ export class AddFaqComponent {
       this.courseDataService.addFaq(faq, this.inputText.value);
     }
     this.faqs = [{ question: '', answer: '' }];
-    // this.isCourseDetailsVisible = true;
+    this.name = '';
   }
 }

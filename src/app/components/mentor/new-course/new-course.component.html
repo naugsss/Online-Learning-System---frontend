@@ -12,7 +12,7 @@
           name="name"
           ngModel
           required
-          pattern="^\S+$"
+          pattern="^[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*$"
           #name="ngModel"
         />
         <small *ngIf="name.invalid && name.touched"

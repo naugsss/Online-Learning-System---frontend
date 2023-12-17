@@ -74,6 +74,7 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
 
   rejectCourse(course: Course) {
     this.isLoading = true;
+    console.log(course);
     this.courseDataService.approveCourse(course, 'reject');
     this.isLoading = false;
   }

@@ -3,10 +3,6 @@
   flex-wrap: wrap;
 }
 
-hr {
-  margin: 0;
-}
-
 .btn {
   background-color: rgba(255, 214, 10, 0.882);
   padding: 10px;
@@ -40,6 +36,7 @@ hr {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 57vh;
 }
 
 .courses {

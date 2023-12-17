@@ -8,6 +8,7 @@ import {
   CourseFaq,
   CourseFeedback,
   CourseStatus,
+  newCourse,
 } from '../components/courses/course/course.model';
 import { Faq } from '../components/mentor/add-faq/add-faq.component';
 
@@ -17,6 +18,7 @@ import { Faq } from '../components/mentor/add-faq/add-faq.component';
 export class CourseDataService {
   updateCourseList = new Subject<Course>();
   disableCourseList = new Subject<Course>();
+  updateEarnings = new Subject<boolean>();
 
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
@@ -36,13 +38,7 @@ export class CourseDataService {
   }
 
   fetchPendingCourseReqeust() {
-    return this.http
-      .get<Course[]>('http://127.0.0.1:8000/pending_courses')
-      .pipe(
-        tap((response) => {
-          // console.log(response);
-        })
-      );
+    return this.http.get<Course[]>('http://127.0.0.1:8000/pending_courses');
   }
 
   fetchMentorEarning() {
@@ -108,6 +104,14 @@ export class CourseDataService {
           } else if (response['message'] === 'Course rejected') {
             this.toast.info({
               detail: 'Course rejected successfully',
+            });
+          }
+        },
+        error: (error) => {
+          if (error.error.error.code === 500) {
+            this.toast.error({
+              detail: 'There was an error rejecting the course',
+              summary: 'Please try again later',
             });
           }
         },
@@ -178,7 +182,6 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           if (response['message'] === 'Feedback added successfully') {
             this.toast.success({
               detail: 'Success!',
@@ -207,6 +210,7 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
+          this.updateEarnings.next(true);
           if (
             response['message'] === 'Course approval request sent to admin.'
           ) {

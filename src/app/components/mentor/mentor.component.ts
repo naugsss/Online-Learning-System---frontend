@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CourseDataService } from 'src/app/shared/courseData.service';
+import { Course } from '../courses/course/course.model';
+import { Subject, Subscription } from 'rxjs';
 
 interface Faq {
   question: string;
@@ -17,10 +19,19 @@ export class MentorComponent {
   changeComponent: boolean = true;
 
   constructor(private courseDataService: CourseDataService) {}
+  private courseAddedSubject = new Subject<Course>();
+  subscription: Subscription;
+  // courseAdded = this.courseAddedSubject.asObservable();
 
   ngOnInit(): void {
     this.courseDataService.fetchMentorEarning().subscribe((earning) => {
       this.mentorEarnings = earning;
+    });
+
+    this.subscription = this.courseDataService.updateEarnings.subscribe(() => {
+      this.courseDataService.fetchMentorEarning().subscribe((earning) => {
+        this.mentorEarnings = earning;
+      });
     });
   }
 

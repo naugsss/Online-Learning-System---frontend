@@ -27,3 +27,12 @@ export class CourseStatus {
     public rating: number
   ) {}
 }
+
+export class newCourse {
+  constructor(
+    public name: string,
+    public price: number,
+    public duration: number,
+    public video: string
+  ) {}
+}
