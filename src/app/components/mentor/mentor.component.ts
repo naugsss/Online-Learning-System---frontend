@@ -21,7 +21,6 @@ export class MentorComponent {
   constructor(private courseDataService: CourseDataService) {}
   private courseAddedSubject = new Subject<Course>();
   subscription: Subscription;
-  // courseAdded = this.courseAddedSubject.asObservable();
 
   ngOnInit(): void {
     this.courseDataService.fetchMentorEarning().subscribe((earning) => {

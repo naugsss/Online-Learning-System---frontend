@@ -28,13 +28,7 @@ export class CourseDataService {
   }
 
   fetchPurchasedCoures() {
-    return this.http
-      .get<Course[]>('http://127.0.0.1:8000/purchased_courses')
-      .pipe(
-        tap((response) => {
-          console.log(response);
-        })
-      );
+    return this.http.get<Course[]>('http://127.0.0.1:8000/purchased_courses');
   }
 
   fetchPendingCourseReqeust() {
@@ -42,29 +36,17 @@ export class CourseDataService {
   }
 
   fetchMentorEarning() {
-    return this.http.get('http://127.0.0.1:8000/mentor').pipe(
-      tap((response) => {
-        // console.log(response);
-      })
-    );
+    return this.http.get('http://127.0.0.1:8000/mentor');
   }
 
   fetchCourseFaqs(courseName: string) {
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_faq`;
-    return this.http.get<CourseFaq[]>(url).pipe(
-      tap((response) => {
-        // console.log(response);
-      })
-    );
+    return this.http.get<CourseFaq[]>(url);
   }
 
   fetchCourseFeedbacks(courseName: string) {
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
-    return this.http.get<CourseFeedback[]>(url).pipe(
-      tap((response) => {
-        // console.log(response);
-      })
-    );
+    return this.http.get<CourseFeedback[]>(url);
   }
 
   disableCourse(course: Course) {

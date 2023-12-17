@@ -31,7 +31,7 @@
           </div>
 
           <div class="card-body">
-            <h3 class="card-title">{{ course.name | capitalize }}</h3>
+            <h3 class="card-title">{{ course.name | titlecase }}</h3>
             <p class="card-price">₹ {{ course.price }}</p>
             <div class="stars">
               <i
@@ -55,11 +55,13 @@
       <h3 class="price-heading">Price Details</h3>
       <div class="courses-price">
         <p class="course-price" *ngFor="let course of cart">
-          {{ course.name }}
+          {{ course.name | titlecase }}
           <span class="">₹ {{ course.price }}</span>
         </p>
       </div>
-      <h3 class="price-total">Subtotal: ₹ {{ calculateSubtotalPrice() }}</h3>
+      <div class="price-total">
+        <h3>Total: ₹ {{ calculateSubtotalPrice() }}</h3>
+      </div>
     </div>
   </div>
 
