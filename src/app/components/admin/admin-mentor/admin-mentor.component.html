@@ -8,9 +8,20 @@
         placeholder="Enter mentor name"
         name="name"
         [(ngModel)]="mentorName"
-        #searchInput
+        #searchInput="ngModel"
+        required
+        pattern="^\S+$"
       />
-      <button class="add-mentor-btn" (click)="onButtonClicked()">Add Mentor</button>
+      <small *ngIf="searchInput.invalid && searchInput.touched"
+        >* Username is a required property</small
+      >
+      <button
+        class="add-mentor-btn"
+        (click)="onButtonClicked()"
+        [disabled]="!searchInput.valid"
+      >
+        Add Mentor
+      </button>
     </div>
   </div>
   <h2>Mentor Details</h2>

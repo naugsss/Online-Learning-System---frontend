@@ -6,14 +6,17 @@ import { Course } from '../../courses/course/course.model';
   templateUrl: './course-content.component.html',
   styleUrls: ['./course-content.component.css'],
 })
-export class CourseContentComponent implements OnInit {
+export class CourseContentComponent {
   selectedRating: number = 0;
   feedbackText: string = '';
   @Input() course: Course;
 
-  ngOnInit(): void {
-    // console.log(this.course);
-  }
+  videos = [
+    {
+      title: 'Lecture 1: Intro to Programming',
+      sourceUrl: '../../../../assets/videos/Promises-js.mp4',
+    },
+  ];
 
   submitFeedback(): void {
     console.log(

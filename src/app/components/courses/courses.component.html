@@ -32,6 +32,7 @@
         <button class="load-more" (click)="loadMoreCourses()">
           Load more courses
         </button>
+        <app-loading-spinner *ngIf="loadingMore"></app-loading-spinner>
       </div>
     </div>
   </div>

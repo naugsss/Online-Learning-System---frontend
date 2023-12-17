@@ -138,13 +138,34 @@ export class CoursesComponent implements OnInit, OnDestroy {
       });
   }
 
+  // updateCourses() {
+  //   this.filteredCourse = this.courses.filter(
+  //     (course) => course.status === 'active'
+  //   ); // Filter only active courses first
+  //   if (this.searchtext) {
+  //     // If search text exists
+  //     this.filteredCourse = this.filteredCourse.filter(
+  //       (
+  //         course // Filter within active courses
+  //       ) => course.name.toLowerCase().includes(this.searchtext.toLowerCase())
+  //     );
+  //   }
+
+  //   console.log(this.filteredCourse);
+  // }
+
   updateCourses() {
-    this.filteredCourse = this.courses.filter((course) => {
-      return (
-        course.name.toLowerCase().includes(this.searchtext.toLowerCase()) &&
-        course.rating >= this.filterService.selectedRating
-      );
-    });
+    this.filteredCourse = this.courses.filter(
+      (course) =>
+        course.status === 'active' && course.approval_status === 'approved'
+    ); // Filter only active and approved courses
+
+    if (this.searchtext) {
+      this.filteredCourse = this.filteredCourse.filter((course) =>
+        course.name.toLowerCase().includes(this.searchtext.toLowerCase())
+      ); // Filter for search text within active and approved courses
+    }
+    console.log(this.filteredCourse);
   }
 
   ngOnDestroy(): void {

@@ -27,6 +27,7 @@ import { NewCourseComponent } from './components/mentor/new-course/new-course.co
 import { AddFaqComponent } from './components/mentor/add-faq/add-faq.component';
 import { CapitalizePipe } from './components/courses/capitalize.pipe';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     NewCourseComponent,
     AddFaqComponent,
     PageNotFoundComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

@@ -30,6 +30,7 @@
               <button class="reject" (click)="rejectCourse(course)">
                 Reject
               </button>
+              <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
             </div>
           </td>
         </tr>
@@ -61,9 +62,17 @@
         <td>₹ {{ course.price }}</td>
         <td>
           <div class="approval-options">
-            <button class="disable" (click)="disableCourse(course)">
+            <button
+              class="disable"
+              (click)="disableCourse(course)"
+              [disabled]="
+                course.approval_status === 'pending' ||
+                course.status === 'deactive'
+              "
+            >
               Disable
             </button>
+            <app-loading-spinner *ngIf="isDisable"></app-loading-spinner>
           </div>
         </td>
       </tr>

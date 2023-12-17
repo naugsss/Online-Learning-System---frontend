@@ -10,11 +10,10 @@
 }
 
 .sidebar {
-  position: fixed;
-  overflow-y: scroll;
+  position: sticky;
+  top: 0;
   right: 0;
   width: 30%;
-  height: 70%;
 }
 
 .course-info {
@@ -24,6 +23,8 @@
 
 .course-lectures {
   background-color: #161d29;
+  overflow-y: scroll;
+  height: 142.5vh;
   /* background-color: transparent; */
 }
 
@@ -83,6 +84,7 @@ hr {
 
 .feedback {
   margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
@@ -150,4 +152,17 @@ h1 {
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label {
   color: #ffed85;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 1px;
+}
+::-webkit-scrollbar-track {
+  border: 2px solid #161d29;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c333f;
+  border-radius: 10px;
 }

@@ -3,7 +3,9 @@ export class Course {
     public name: string,
     public price: number,
     public duration: number,
-    public rating: number
+    public rating: number,
+    public status: string,
+    public approval_status: string
   ) {}
 }
 

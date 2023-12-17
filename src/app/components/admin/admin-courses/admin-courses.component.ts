@@ -16,7 +16,8 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
   anotherSubscription: Subscription;
   courseButton: boolean = true;
   currentPage: number = 1;
-
+  isLoading: boolean = false;
+  isDisable: boolean = false;
   constructor(
     private courseDataService: CourseDataService,
     private courseService: CourseService
@@ -66,19 +67,25 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
   }
 
   approveCourse(course: Course) {
+    this.isLoading = true;
     this.courseDataService.approveCourse(course, 'approve');
+    this.isLoading = false;
   }
 
   rejectCourse(course: Course) {
+    this.isLoading = true;
     this.courseDataService.approveCourse(course, 'reject');
+    this.isLoading = false;
   }
 
   disableCourse(course: Course) {
+    this.isDisable = true;
     this.courseDataService.disableCourse(course);
 
     this.courseDataService.fetchCourses().subscribe((courses) => {
       this.allCourses = courses;
     });
+    this.isDisable = false;
   }
 
   ngOnDestroy(): void {
