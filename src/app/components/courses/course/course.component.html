@@ -8,7 +8,7 @@
     />
     <div class="card-body">
       <div class="card-heading">
-        <p class="card-title">{{ course.name | capitalize }}</p>
+        <p class="card-title">{{ course.name }}</p>
         <div class="stars">
           <i
             class="fa fa-star"
@@ -19,18 +19,6 @@
       </div>
 
       <p class="card-price" *ngIf="price">₹ {{ course.price }}</p>
-
-      <!-- <div class="purchase-options" *ngIf="isOnCoursePage()">
-        <button class="add-to-cart" (click)="addTocart(course)">
-          Add to Cart
-        </button>
-        <button class="buy-now">Buy now</button>
-      </div> -->
-
-      <!-- <div class="approval-options" *ngIf="isOnAdminPage()">
-        <button class="approve" (click)="approveCourse(course)">Approve</button>
-        <button class="reject">Reject</button>
-      </div> -->
     </div>
   </div>
 </div>

@@ -168,6 +168,34 @@ export class CourseDataService {
         },
       });
   }
+  addFeedback(courseName: string, feedback: string, rating: number) {
+    rating = Number(rating);
+    const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
+    this.http
+      .post(url, {
+        ratings: rating,
+        comments: feedback,
+      })
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          if (response['message'] === 'Feedback added successfully') {
+            this.toast.success({
+              detail: 'Success!',
+              summary: response['message'],
+            });
+          }
+        },
+        error: (error) => {
+          if (error.error.error.code === 403) {
+            this.toast.error({
+              detail: 'You cannot add feedback to this course',
+              summary: 'Please purchase the course to add feedback.',
+            });
+          }
+        },
+      });
+  }
 
   addCourse(courseData: any) {
     this.http

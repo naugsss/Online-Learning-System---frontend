@@ -42,10 +42,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.courseDataService.fetchCourses().subscribe((courses) => {
       this.courseService.setAllCourses(courses);
       this.filteredCourse = courses;
+      this.updateCourses();
       console.log(this.filteredCourse);
     });
-    // this.fetchCourses(this.currentPage, this.pageSize);
-    // this.courseService.fetchCourses(this.currentPage, this.pageSize); // Fetch first page
 
     this.subscription = this.courseService.coursesList.subscribe(
       (courses: Course[]): void => {
@@ -67,15 +66,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     }
   }
 
-  // fetchCourses(page: number, size: number) {
-  //   this.loadingMore = true;
-  //   this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
-  //     this.courseService.setAllCourses(courses);
-  //     this.updateCourses();
-  //     this.loadingMore = false;
-  //   });
-  // }
-
   fetchCourses(page: number, size: number) {
     this.loadingMore = true;
     this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
@@ -84,10 +74,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.loadingMore = false;
     });
   }
-
-  // fetchCourses(page: number, size: number) {
-  //   this.courseService.fetchCourses(page, size);
-  // }
 
   updateCourseByRating(rating: number) {
     this.filteredCourse = this.filterService.filterCourses(
@@ -109,20 +95,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.updateCourses();
   }
 
-  // onCardClick(course: Course): void {
-  //   this.selectedCourse = course;
-  //   console.log(this.selectedCourse);
-  //   this.navigateToCoursePage(course.name);
-  // }
-
-  // private navigateToCoursePage(courseName: string): void {
-  //   // this.router.navigate(['/courses', courseName]);
-  // }
-  // loadMoreCourses() {
-  //   this.currentPage++;
-  //   this.fetchCourses(this.currentPage, this.pageSize);
-  // }
-
   loadMoreCourses() {
     this.loadingMore = true;
     this.currentPage++;
@@ -133,39 +105,33 @@ export class CoursesComponent implements OnInit, OnDestroy {
           this.moreCourses = false;
         }
         this.courses.push(...courses);
+
         this.updateCourses();
         this.loadingMore = false;
       });
   }
 
-  // updateCourses() {
-  //   this.filteredCourse = this.courses.filter(
-  //     (course) => course.status === 'active'
-  //   ); // Filter only active courses first
-  //   if (this.searchtext) {
-  //     // If search text exists
-  //     this.filteredCourse = this.filteredCourse.filter(
-  //       (
-  //         course // Filter within active courses
-  //       ) => course.name.toLowerCase().includes(this.searchtext.toLowerCase())
-  //     );
-  //   }
-
-  //   console.log(this.filteredCourse);
-  // }
-
   updateCourses() {
-    this.filteredCourse = this.courses.filter(
-      (course) =>
-        course.status === 'active' && course.approval_status === 'approved'
-    ); // Filter only active and approved courses
+    const userData: {
+      username: string;
+      role: number;
+      token: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+    console.log(userData);
+    if (userData.role === 1) {
+      this.filteredCourse = this.courses.filter(
+        (course) =>
+          course.status === 'active' && course.approval_status === 'approved'
+      );
+    } else {
+      this.filteredCourse = this.courses;
+    }
 
     if (this.searchtext) {
       this.filteredCourse = this.filteredCourse.filter((course) =>
         course.name.toLowerCase().includes(this.searchtext.toLowerCase())
-      ); // Filter for search text within active and approved courses
+      );
     }
-    console.log(this.filteredCourse);
   }
 
   ngOnDestroy(): void {

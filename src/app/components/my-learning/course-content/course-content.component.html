@@ -1,14 +1,19 @@
 <div class="content-container">
   <div class="video-container">
-    <video id="my-video" class="video-js" controls width="90%">
-      <source
-        src="../../../../assets/videos/Promises-js.mp4"
-        type="video/mp4"
-      />
+    <app-loading-spinner *ngIf="isLoadingVideo"></app-loading-spinner>
+
+    <video
+      id="my-video"
+      class="video-js"
+      *ngIf="selectedVideo"
+      controls
+      width="90%"
+    >
+      <source src="{{ selectedVideo.sourceUrl }}" type="video/mp4" />
     </video>
 
-    <div class="course-info">
-      <p>Lecture 1 : Intro to Programming & Flowcharts</p>
+    <div class="course-info" *ngIf="selectedVideo">
+      <p>{{ selectedVideo.title }}</p>
     </div>
 
     <div class="feedback">
@@ -69,26 +74,10 @@
   <div class="sidebar">
     <div class="course-lectures">
       <h3>Course Content</h3>
-      <p class="lecture">Lecture 1 : Intro to Programming</p>
-      <p class="lecture">Lecture 2 : Intro to Programming</p>
-      <p class="lecture">Lecture 3 : Intro to Programming</p>
-      <p class="lecture">Lecture 4 : Intro to Programming</p>
-      <p class="lecture">Lecture 5 : Intro to Programming</p>
-      <p class="lecture">Lecture 6 : Intro to Programming</p>
-      <p class="lecture">Lecture 7 : Intro to Programming</p>
-      <p class="lecture">Lecture 8 : Intro to Programming</p>
-      <p class="lecture">Lecture 9 : Intro to Programming</p>
-      <p class="lecture">Lecture 10 : Intro to Programming</p>
-      <p class="lecture">Lecture 1 : Intro to Programming</p>
-      <p class="lecture">Lecture 2 : Intro to Programming</p>
-      <p class="lecture">Lecture 3 : Intro to Programming</p>
-      <p class="lecture">Lecture 4 : Intro to Programming</p>
-      <p class="lecture">Lecture 5 : Intro to Programming</p>
-      <p class="lecture">Lecture 6 : Intro to Programming</p>
-      <p class="lecture">Lecture 7 : Intro to Programming</p>
-      <p class="lecture">Lecture 8 : Intro to Programming</p>
-      <p class="lecture">Lecture 9 : Intro to Programming</p>
-      <p class="lecture">Lecture 10 : Intro to Programming</p>
+
+      <div *ngFor="let video of videos">
+        <p class="lecture" (click)="onVideoClick(video)">{{ video.title }}</p>
+      </div>
     </div>
   </div>
 </div>
