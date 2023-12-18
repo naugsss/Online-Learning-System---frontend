@@ -19,11 +19,11 @@ export class MentorComponent {
   changeComponent: boolean = true;
 
   constructor(private courseDataService: CourseDataService) {}
-  private courseAddedSubject = new Subject<Course>();
   subscription: Subscription;
 
   ngOnInit(): void {
     this.courseDataService.fetchMentorEarning().subscribe((earning) => {
+      console.log(earning);
       this.mentorEarnings = earning;
     });
 

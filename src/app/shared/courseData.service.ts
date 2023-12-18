@@ -22,7 +22,7 @@ export class CourseDataService {
 
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
-  fetchCourses(page: number = 1, size: number = 6) {
+  fetchCourses(page: number = 1, size: number = 8) {
     const url = `http://127.0.0.1:8000/courses?page=${page}&size=${size}`;
     return this.http.get<CourseStatus[]>(url);
   }
