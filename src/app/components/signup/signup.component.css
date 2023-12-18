@@ -79,3 +79,16 @@ input.ng-invalid.ng-touched {
 small {
   color: red;
 }
+
+.password,
+.re-password {
+  position: relative;
+}
+
+.fa-eye {
+  position: absolute;
+  left: 88%;
+  top: 57%;
+  color: #010914;
+  cursor: pointer;
+}

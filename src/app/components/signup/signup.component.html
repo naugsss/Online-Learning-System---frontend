@@ -21,6 +21,7 @@
             #name="ngModel"
             pattern="^\S+$"
           />
+
           <small *ngIf="name.invalid && name.touched"
             >* Name is a required property</small
           >
@@ -59,10 +60,10 @@
             >* Email is a required property</small
           >
         </div>
-        <div>
+        <div class="password">
           <label for="password">Password</label>
           <input
-            type="password"
+            [type]="hide ? 'password' : 'text'"
             placeholder="Enter password"
             id="password"
             class="form-style"
@@ -72,14 +73,16 @@
             #password="ngModel"
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$"
           />
+          <i class="fa-solid fa-eye" (click)="toggleIcon()"></i>
+
           <small *ngIf="password.invalid && password.touched"
             >* Password is a required property</small
           >
         </div>
-        <div>
+        <div class="re-password">
           <label for="repassword">Re-enter password</label>
           <input
-            type="password"
+            [type]="hide ? 'password' : 'text'"
             placeholder="Re-enter password"
             id="repassword"
             ngModel
@@ -89,6 +92,7 @@
             #repassword="ngModel"
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$"
           />
+          <i class="fa-solid fa-eye" (click)="toggleIcon()"></i>
           <small *ngIf="repassword.invalid && repassword.touched"
             >* Password is a required property</small
           >

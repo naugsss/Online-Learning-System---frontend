@@ -21,19 +21,19 @@
           >
         </div>
 
-        <div>
+        <div class="password">
           <label for="password">Password</label>
           <input
-            type="password"
+            [type]="hide ? 'password' : 'text'"
             placeholder="Enter password"
             id="password"
             class="form-style"
             name="password"
             ngModel
-            value="1234"
             required
             #password="ngModel"
           />
+          <i class="fa-solid fa-eye" (click)="toggleIcon()"></i>
           <small *ngIf="password.invalid && password.touched"
             >* Password is a required property</small
           >

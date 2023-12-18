@@ -16,6 +16,7 @@ export class SignupComponent {
     private toast: NgToastService,
     private router: Router
   ) {}
+  hide: boolean = true;
 
   onSubmit(authForm: NgForm) {
     const username = authForm.value.username;
@@ -46,5 +47,10 @@ export class SignupComponent {
         },
       });
     }
+  }
+
+  toggleIcon() {
+    this.hide = !this.hide;
+    // this.input.type = this.showPassword ? 'text' : 'password';
   }
 }

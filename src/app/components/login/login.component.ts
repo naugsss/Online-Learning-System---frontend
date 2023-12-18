@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
@@ -16,11 +16,12 @@ export class LoginComponent {
     private toast: NgToastService
   ) {}
   isLoading = false;
-
+  hide: boolean = true;
   onSubmit(authForm: NgForm) {
     const username = authForm.value.username;
     const password = authForm.value.password;
     this.isLoading = true;
+    // @ViewChild('showPassword') showPassword : HTMLInputElement
 
     this.authService.login(username, password).subscribe({
       next: (response) => {
@@ -39,5 +40,10 @@ export class LoginComponent {
         });
       },
     });
+  }
+
+  toggleIcon() {
+    this.hide = !this.hide;
+    // this.input.type = this.showPassword ? 'text' : 'password';
   }
 }
