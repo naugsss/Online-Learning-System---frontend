@@ -164,10 +164,18 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
+          console.log(response);
           if (response['message'] === 'Feedback added successfully') {
             this.toast.success({
               detail: 'Success!',
               summary: response['message'],
+            });
+          } else if (
+            response['message'] ===
+            "You've already added a feedback to this course"
+          ) {
+            this.toast.info({
+              detail: response['message'],
             });
           }
         },

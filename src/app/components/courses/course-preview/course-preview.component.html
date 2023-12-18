@@ -32,7 +32,7 @@
     <h2>FAQ</h2>
     <hr />
     <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item" *ngFor="let faq of faqs">
+      <div class="accordion-item" *ngFor="let faq of faqs; let i = index">
         <h2 class="accordion-header" id="flush-headingOne">
           <button
             class="accordion-button collapsed"

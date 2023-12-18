@@ -27,6 +27,7 @@ import { NewCourseComponent } from './components/mentor/new-course/new-course.co
 import { AddFaqComponent } from './components/mentor/add-faq/add-faq.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { DelayInterceptor } from './components/mentor/add-faq/add-faq.interceptor';
 
 @NgModule({
   declarations: [

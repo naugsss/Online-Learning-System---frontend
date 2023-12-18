@@ -27,7 +27,6 @@ export class AddFaqComponent {
     this.faqs.splice(this.faqs.length - 1, 1);
   }
   onSubmitFaq(): void {
-    console.log(this.inputText.value);
     console.log(this.faqs);
     const faqs = this.faqs;
     for (const faq of faqs) {
