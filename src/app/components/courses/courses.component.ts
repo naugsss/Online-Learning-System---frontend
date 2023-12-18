@@ -117,7 +117,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
       role: number;
       token: string;
     } = JSON.parse(localStorage.getItem('userData'));
-    console.log(userData);
     if (userData.role === 1) {
       this.filteredCourse = this.courses.filter(
         (course) =>

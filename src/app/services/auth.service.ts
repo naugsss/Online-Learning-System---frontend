@@ -26,6 +26,7 @@ interface loginResponse {
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
+  private tokenExpiryTimer: any;
 
   user = new BehaviorSubject<User>(null);
 
@@ -45,19 +46,12 @@ export class AuthService {
   }
 
   signup(email: string, name: string, username: string, password: string) {
-    return this.http
-      .post<AuthResponseData>('http://127.0.0.1:8000/register', {
-        email: email,
-        name: name,
-        username: username,
-        password: password,
-      })
-      .pipe(
-        // catchError(this.handleError),
-        tap((response) => {
-          console.log(response);
-        })
-      );
+    return this.http.post<AuthResponseData>('http://127.0.0.1:8000/register', {
+      email: email,
+      name: name,
+      username: username,
+      password: password,
+    });
   }
 
   isLoggedIn(): boolean {
@@ -77,12 +71,18 @@ export class AuthService {
       const decodedToken: loginResponse = jwtDecode(token);
 
       if (decodedToken.expire < new Date().getTime()) {
-        this.logout();
+        this.autoLogout(new Date().getTime() - decodedToken.expire);
       } else {
         const user = new User(userData.username, userData.role, userData.token);
         this.user.next(user);
       }
     }
+  }
+
+  autoLogout(expirationDuration: number) {
+    this.tokenExpiryTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
   }
 
   logout() {

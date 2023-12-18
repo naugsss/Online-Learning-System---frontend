@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, tap } from 'rxjs';
+import { Subject } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
 
 import {
@@ -8,7 +8,6 @@ import {
   CourseFaq,
   CourseFeedback,
   CourseStatus,
-  newCourse,
 } from '../components/courses/course/course.model';
 import { Faq } from '../components/mentor/add-faq/add-faq.component';
 
