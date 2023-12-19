@@ -26,7 +26,6 @@ interface loginResponse {
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
-  private tokenExpiryTimer: any;
 
   user = new BehaviorSubject<User>(null);
 
@@ -37,9 +36,8 @@ export class AuthService {
         password: password,
       })
       .pipe(
-        // catchError(this.handleError),
         tap((response) => {
-          console.log(response);
+          this.autoLogin();
           this.handleLogin(response);
         })
       );
@@ -71,6 +69,7 @@ export class AuthService {
       const decodedToken: loginResponse = jwtDecode(token);
 
       if (decodedToken.expire < new Date().getTime()) {
+        console.log('calling autoLogout');
         this.autoLogout(new Date().getTime() - decodedToken.expire);
       } else {
         const user = new User(userData.username, userData.role, userData.token);
@@ -80,7 +79,7 @@ export class AuthService {
   }
 
   autoLogout(expirationDuration: number) {
-    this.tokenExpiryTimer = setTimeout(() => {
+    setTimeout(() => {
       this.logout();
     }, expirationDuration);
   }
@@ -93,7 +92,6 @@ export class AuthService {
 
   handleLogin(response: any) {
     const jwt_token = response['access_token'];
-    // const decodedToken: loginResponse = jwtDecode(jwt_token, { header: true });
     const decodedToken: loginResponse = jwtDecode(jwt_token);
     const role = decodedToken['role'];
     const username = decodedToken['username'];

@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { jwtDecode } from 'jwt-decode';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { cartService } from '../cart/cart.service';
@@ -17,7 +16,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userRole = 4;
   isAdmin: boolean = false;
   isMentor: boolean = false;
-  // userData = {};
   private userSub: Subscription;
 
   constructor(
