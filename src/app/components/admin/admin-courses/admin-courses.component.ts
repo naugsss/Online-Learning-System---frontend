@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+
 import { Course, CourseStatus } from '../../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { CourseService } from '../../courses/course.service';
-import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-courses',
@@ -31,7 +32,6 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
     });
     this.courseDataService.fetchCourses().subscribe((courses) => {
       this.allCourses = courses;
-      // console.log(this.allCourses);
     });
 
     this.courseDisabledSubject.subscribe();

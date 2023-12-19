@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Subject } from 'rxjs';
 
 import { Course } from '../course/course.model';
 
