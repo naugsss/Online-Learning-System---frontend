@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CourseComponent } from './course/course.component';
-import { CoursesComponent } from './courses.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { CoursesComponent } from './courses.component';
+import { CourseComponent } from './course/course.component';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 import { CourseRoutingModule } from './courses-routing.module';
 import { MyLearningComponent } from '../my-learning/my-learning.component';

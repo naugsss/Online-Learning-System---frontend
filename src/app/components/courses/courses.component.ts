@@ -70,6 +70,12 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.updateCourses();
   }
 
+  clearSearch() {
+    this.searchInput.nativeElement.value = '';
+    this.searchtext = '';
+    this.onSearchChange();
+  }
+
   loadMoreCourses() {
     this.loadingMore = true;
     this.currentPage++;

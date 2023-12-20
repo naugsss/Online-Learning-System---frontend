@@ -21,7 +21,14 @@
   align-items: center;
   margin-left: 30px;
   justify-content: center;
+  position: relative;
   gap: 45px;
+}
+
+.fa-xmark {
+  position: absolute;
+  left: 68%;
+  cursor: pointer;
 }
 
 .filter {
