@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 import { User } from '../components/login/user.model';
-import { Router } from '@angular/router';
 
 interface AuthResponseData {
   code: number;

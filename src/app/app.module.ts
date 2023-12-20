@@ -10,50 +10,34 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { CoursesComponent } from './components/courses/courses.component';
-import { CourseComponent } from './components/courses/course/course.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginInterceptorService } from './components/login/login.interceptor';
-import { MyLearningComponent } from './components/my-learning/my-learning.component';
-import { CourseFilterComponent } from './components/courses/course-filter/course-filter.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { AdminCoursesComponent } from './components/admin/admin-courses/admin-courses.component';
-import { AdminMentorComponent } from './components/admin/admin-mentor/admin-mentor.component';
-import { MentorComponent } from './components/mentor/mentor.component';
-import { CoursePreviewComponent } from './components/courses/course-preview/course-preview.component';
 import { CourseContentComponent } from './components/my-learning/course-content/course-content.component';
-import { NewCourseComponent } from './components/mentor/new-course/new-course.component';
-import { AddFaqComponent } from './components/mentor/add-faq/add-faq.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
-import { DelayInterceptor } from './components/mentor/add-faq/add-faq.interceptor';
+import { CoursesModule } from './components/courses/courses.module';
+import { MyLearningComponent } from './components/my-learning/my-learning.component';
+import { AdminModule } from './components/admin/admin.module';
+import { MentorModule } from './components/mentor/mentor.module';
+import { CartModule } from './components/cart/cart.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    MyLearningComponent,
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    CoursesComponent,
-    CourseComponent,
-    CartComponent,
-    MyLearningComponent,
-    CourseFilterComponent,
     FooterComponent,
-    AdminComponent,
-    AdminCoursesComponent,
-    AdminMentorComponent,
-    MentorComponent,
-    CoursePreviewComponent,
     CourseContentComponent,
-    NewCourseComponent,
-    AddFaqComponent,
     PageNotFoundComponent,
-    LoadingSpinnerComponent,
   ],
   imports: [
+    CartModule,
+    MentorModule,
+    AdminModule,
+    CoursesModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

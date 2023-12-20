@@ -96,7 +96,7 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
   private loadMoreCourses(): void {
     this.currentPage++;
     this.courseDataService
-      .fetchCourses(this.currentPage, 6)
+      .fetchCourses(this.currentPage, 8)
       .subscribe((courses) => {
         this.allCourses = this.allCourses.concat(courses);
       });

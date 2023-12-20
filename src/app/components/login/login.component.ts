@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -21,7 +22,6 @@ export class LoginComponent {
     const username = authForm.value.username;
     const password = authForm.value.password;
     this.isLoading = true;
-    // @ViewChild('showPassword') showPassword : HTMLInputElement
 
     this.authService.login(username, password).subscribe({
       next: (response) => {
@@ -44,6 +44,5 @@ export class LoginComponent {
 
   toggleIcon() {
     this.hide = !this.hide;
-    // this.input.type = this.showPassword ? 'text' : 'password';
   }
 }

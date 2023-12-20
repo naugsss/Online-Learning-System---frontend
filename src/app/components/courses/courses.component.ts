@@ -10,8 +10,6 @@ import { Subscription } from 'rxjs';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from './course/course.model';
 import { CourseService } from './course.service';
-import { FilterService } from './course-filter/filter.service';
-import { CourseFilterComponent } from './course-filter/course-filter.component';
 
 @Component({
   selector: 'app-courses',
@@ -30,12 +28,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
   selectedCourse: Course;
 
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
-  @ViewChild('filterComponent') filterComponent: CourseFilterComponent;
 
   constructor(
     private courseService: CourseService,
-    private courseDataService: CourseDataService,
-    private filterService: FilterService
+    private courseDataService: CourseDataService
   ) {}
 
   ngOnInit(): void {
@@ -58,12 +54,12 @@ export class CoursesComponent implements OnInit, OnDestroy {
       }
     );
 
-    if (this.filterComponent) {
-      this.filterComponent.ratingSelected.subscribe((rating) => {
-        console.log(rating);
-        this.updateCourseByRating(rating);
-      });
-    }
+    // if (this.filterComponent) {
+    //   this.filterComponent.ratingSelected.subscribe((rating) => {
+    //     console.log(rating);
+    //     this.updateCourseByRating(rating);
+    //   });
+    // }
   }
 
   fetchCourses(page: number, size: number) {
@@ -75,20 +71,19 @@ export class CoursesComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateCourseByRating(rating: number) {
-    this.filteredCourse = this.filterService.filterCourses(
-      this.courses,
-      this.searchtext
-    );
+  // updateCourseByRating(rating: number) {
+  //   this.filteredCourse = this.filterService.filterCourses(
+  //     this.courses,
+  //     this.searchtext
+  //   );
 
-    console.log(this.filteredCourse);
-  }
+  //   console.log(this.filteredCourse);
+  // }
 
-  onRatingSelect(rating: number) {
-    this.filterService.setSelectedRating(rating);
-    this.updateCourses();
-    console.log(this.filteredCourse);
-  }
+  // onRatingSelect(rating: number) {
+  //   this.updateCourses();
+  //   console.log(this.filteredCourse);
+  // }
 
   onSearchChange() {
     this.searchtext = this.searchInput.nativeElement.value;
