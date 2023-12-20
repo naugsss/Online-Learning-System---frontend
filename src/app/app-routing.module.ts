@@ -42,13 +42,20 @@ const routes: Routes = [
         (module) => module.CartModule
       ),
   },
+  // {
+  //   path: 'myLearning',
+  //   component: MyLearningComponent,
+  // },
+  // {
+  //   path: 'myLearning/:courseName',
+  //   component: CourseContentComponent,
+  // },
   {
     path: 'myLearning',
-    component: MyLearningComponent,
-  },
-  {
-    path: 'myLearning/:courseName',
-    component: CourseContentComponent,
+    loadChildren: () =>
+      import('./components/my-learning/my-learning.module').then(
+        (module) => module.MyLearningModule
+      ),
   },
   {
     path: '**',
