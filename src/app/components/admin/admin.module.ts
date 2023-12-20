@@ -5,7 +5,7 @@ import { AdminMentorComponent } from './admin-mentor/admin-mentor.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminGuard } from 'src/app/services/admin.guard';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {

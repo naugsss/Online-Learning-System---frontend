@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from '../courses/course/course.model';
-import { Subscription } from 'rxjs';
-import { CourseService } from '../courses/course.service';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-home',

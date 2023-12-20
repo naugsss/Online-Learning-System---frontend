@@ -7,6 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable, map, take } from 'rxjs';
+
 import { AuthService } from 'src/app/services/auth.service';
 
 export const AuthGuard: CanActivateFn = (

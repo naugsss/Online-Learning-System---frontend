@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { Course, CourseFaq, CourseFeedback } from '../course/course.model';
-import { CourseService } from '../course.service';
-import { cartService } from '../../cart/cart.service';
+import { CourseService } from '../../../services/course.service';
+import { cartService } from '../../../services/cart.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 
 @Component({

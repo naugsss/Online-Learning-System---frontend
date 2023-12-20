@@ -3,7 +3,7 @@ import { Subject, Subscription } from 'rxjs';
 
 import { Course, CourseStatus } from '../../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import { CourseService } from '../../courses/course.service';
+import { CourseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-admin-courses',
@@ -63,7 +63,6 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
     this.courses = this.courses.filter(
       (course) => course.name !== courses.name
     );
-    // console.log(this.courses);
   }
 
   approveCourse(course: Course) {

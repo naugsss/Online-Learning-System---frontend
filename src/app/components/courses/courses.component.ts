@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from './course/course.model';
-import { CourseService } from './course.service';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-courses',
@@ -53,13 +53,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.courses = courses.slice();
       }
     );
-
-    // if (this.filterComponent) {
-    //   this.filterComponent.ratingSelected.subscribe((rating) => {
-    //     console.log(rating);
-    //     this.updateCourseByRating(rating);
-    //   });
-    // }
   }
 
   fetchCourses(page: number, size: number) {
@@ -70,20 +63,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.loadingMore = false;
     });
   }
-
-  // updateCourseByRating(rating: number) {
-  //   this.filteredCourse = this.filterService.filterCourses(
-  //     this.courses,
-  //     this.searchtext
-  //   );
-
-  //   console.log(this.filteredCourse);
-  // }
-
-  // onRatingSelect(rating: number) {
-  //   this.updateCourses();
-  //   console.log(this.filteredCourse);
-  // }
 
   onSearchChange() {
     this.searchtext = this.searchInput.nativeElement.value;

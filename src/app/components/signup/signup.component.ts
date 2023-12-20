@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -51,6 +52,5 @@ export class SignupComponent {
 
   toggleIcon() {
     this.hide = !this.hide;
-    // this.input.type = this.showPassword ? 'text' : 'password';
   }
 }

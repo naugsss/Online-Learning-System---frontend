@@ -42,12 +42,6 @@ h2 {
   font-size: 35px;
 }
 
-/* .container {
-  margin: 50px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-} */
 .card {
   background-color: #161d29;
   color: white;
@@ -56,15 +50,6 @@ h2 {
   border: none;
   border-bottom: 1px solid #2c333f;
 }
-
-/* .card:hover {
-  transition: all 0.4s ease-in;
-
-  background-color: #1e242f;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
-
-  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.2);
-} */
 
 .cards {
   display: flex;

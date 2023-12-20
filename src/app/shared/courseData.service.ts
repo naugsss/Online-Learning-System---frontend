@@ -143,7 +143,6 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           if (response['message'] === 'FAQ added successfully') {
             this.toast.success({
               detail: 'Success!',
@@ -163,7 +162,6 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          console.log(response);
           if (response['message'] === 'Feedback added successfully') {
             this.toast.success({
               detail: 'Success!',

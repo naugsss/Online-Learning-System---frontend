@@ -1,13 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { CourseDataService } from 'src/app/shared/courseData.service';
-import { Course } from '../courses/course/course.model';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
-interface Faq {
-  question: string;
-  answer: string;
-}
+import { CourseDataService } from 'src/app/shared/courseData.service';
 
 @Component({
   selector: 'app-mentor',

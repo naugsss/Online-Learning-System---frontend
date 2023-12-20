@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
-import { cartService } from '../cart/cart.service';
+import { cartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -34,18 +34,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.cartService.getCartItemNumber().subscribe((count) => {
       this.cartItemNumber = count;
     });
-
-    // const userDataString = JSON.parse(localStorage.getItem('userData'));
-    // console.log('user datastring');
-    // console.log(userDataString);
-    // if (userDataString) {
-    //   this.isAuthenticated = true;
-    //   if (userDataString.role === 1) {
-    //     this.isAdmin = true;
-    //   } else if (userDataString.role === 3) {
-    //     this.isMentor = true;
-    //   }
-    // }
   }
   toggleProfileOptions() {
     this.showProfileOptions = !this.showProfileOptions;

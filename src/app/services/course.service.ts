@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Course } from './course/course.model';
+import { Course } from '../components/courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 
 @Injectable({

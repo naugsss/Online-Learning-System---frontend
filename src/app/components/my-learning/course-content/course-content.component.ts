@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { Course } from '../../courses/course/course.model';
-import { CourseService } from '../../courses/course.service';
+import { CourseService } from '../../../services/course.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 
 interface Video {

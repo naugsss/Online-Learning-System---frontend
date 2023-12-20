@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import { CourseService } from '../courses/course.service';
+import { CourseService } from '../../services/course.service';
 import { Course } from '../courses/course/course.model';
 
 @Component({

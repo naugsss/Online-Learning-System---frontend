@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import { Course, newCourse } from '../../courses/course/course.model';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-new-course',
@@ -12,7 +10,6 @@ import { Subject } from 'rxjs';
 export class NewCourseComponent {
   constructor(private courseDataService: CourseDataService) {}
   @ViewChild('courseForm') form: NgForm;
-  // @Output() courseAdded = new EventEmitter<newCourse>();
 
   onSubmit(): void {
     const courseData = {

@@ -2,9 +2,9 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Course } from './course.model';
-import { cartService } from '../../cart/cart.service';
+import { cartService } from '../../../services/cart.service';
 import { CoursePreviewComponent } from '../course-preview/course-preview.component';
-import { CourseService } from '../course.service';
+import { CourseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-course',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { cartService } from './cart.service';
+import { cartService } from '../../services/cart.service';
 import { Course } from '../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 
@@ -10,7 +10,7 @@ import { CourseDataService } from 'src/app/shared/courseData.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  emptyCartImage: string = null
+  emptyCartImage: string = null;
   constructor(
     private cartService: cartService,
     private courseDataService: CourseDataService
@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
     } else {
       this.cartService.getCart().subscribe((cart) => {
         this.cart = cart;
-        this.emptyCartImage = this.cartService.emptyCartImage
+        this.emptyCartImage = this.cartService.emptyCartImage;
       });
     }
   }

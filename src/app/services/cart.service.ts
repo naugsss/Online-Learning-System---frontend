@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Course } from '../courses/course/course.model';
 import { NgToastService } from 'ng-angular-popup';
-import { BehaviorSubject, Observable, Subject, Subscription, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
+
+import { Course } from '../components/courses/course/course.model';
 
 @Injectable({
   providedIn: 'root',
