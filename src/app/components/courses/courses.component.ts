@@ -39,6 +39,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.courseService.setAllCourses(courses);
       this.filteredCourse = courses;
       this.updateCourses();
+      console.log('hiiiiiiiiiiiiiii');
       console.log(this.filteredCourse);
     });
 
