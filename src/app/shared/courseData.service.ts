@@ -244,7 +244,6 @@ export class CourseDataService {
           }
         },
         error: (error) => {
-          console.log(error);
           this.toast.error({
             detail: 'There was an error in purchasing the course.',
             summary: 'Please try again',

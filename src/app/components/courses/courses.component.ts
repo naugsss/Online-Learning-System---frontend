@@ -18,7 +18,7 @@ import { CourseService } from '../../services/course.service';
 })
 export class CoursesComponent implements OnInit, OnDestroy {
   courses: Course[] = [];
-  subscription: Subscription;
+  subscription: Subscription[] = [];
   searchtext: string = '';
   filteredCourse: Course[] = [];
   currentPage: number = 1;
@@ -35,24 +35,24 @@ export class CoursesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.courseDataService.fetchCourses().subscribe((courses) => {
-      this.courseService.setAllCourses(courses);
-      this.filteredCourse = courses;
-      this.updateCourses();
-      console.log('hiiiiiiiiiiiiiii');
-      console.log(this.filteredCourse);
-    });
-
-    this.subscription = this.courseService.coursesList.subscribe(
-      (courses: Course[]): void => {
-        this.courses = courses;
-      }
+    this.subscription.push(
+      this.courseDataService.fetchCourses().subscribe((courses) => {
+        this.courseService.setAllCourses(courses);
+        this.filteredCourse = courses;
+        this.updateCourses();
+      })
     );
 
-    this.subscription = this.courseService.coursesList.subscribe(
-      (courses: Course[]) => {
+    this.subscription.push(
+      this.courseService.coursesList.subscribe((courses: Course[]): void => {
+        this.courses = courses;
+      })
+    );
+
+    this.subscription.push(
+      this.courseService.coursesList.subscribe((courses: Course[]) => {
         this.courses = courses.slice();
-      }
+      })
     );
   }
 
@@ -115,6 +115,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }

@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Course, CourseFaq, CourseFeedback } from '../course/course.model';
 import { CourseService } from '../../../services/course.service';
 import { cartService } from '../../../services/cart.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-course-preview',
   templateUrl: './course-preview.component.html',
   styleUrls: ['./course-preview.component.css'],
 })
-export class CoursePreviewComponent {
+export class CoursePreviewComponent implements OnInit, OnDestroy {
   selectedCourse: Course;
   faqs: CourseFaq[] = [];
   feedback: CourseFeedback[] = [];
-
+  subscription: Subscription;
   constructor(
     private courseService: CourseService,
     private cartService: cartService,
@@ -23,7 +24,7 @@ export class CoursePreviewComponent {
 
   ngOnInit(): void {
     this.selectedCourse = this.courseService.getSelectedCourse();
-    this.courseDataService
+    this.subscription = this.courseDataService
       .fetchCourseFaqs(this.selectedCourse.name)
       .subscribe((faq) => {
         this.faqs = faq;
@@ -42,5 +43,9 @@ export class CoursePreviewComponent {
 
   onBuyNowClick(course: Course) {
     this.courseDataService.purchaseCourse(course);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

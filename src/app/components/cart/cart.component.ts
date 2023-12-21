@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { cartService } from '../../services/cart.service';
 import { Course } from '../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -10,6 +11,7 @@ import { CourseDataService } from 'src/app/shared/courseData.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  subscription: Subscription[] = [];
   emptyCartImage: string = null;
   constructor(
     private cartService: cartService,
@@ -23,10 +25,12 @@ export class CartComponent implements OnInit {
     if (cartData) {
       this.cart = JSON.parse(cartData);
     } else {
-      this.cartService.getCart().subscribe((cart) => {
-        this.cart = cart;
-        this.emptyCartImage = this.cartService.emptyCartImage;
-      });
+      this.subscription.push(
+        this.cartService.getCart().subscribe((cart) => {
+          this.cart = cart;
+          this.emptyCartImage = this.cartService.emptyCartImage;
+        })
+      );
     }
   }
 
@@ -42,9 +46,15 @@ export class CartComponent implements OnInit {
   }
 
   updateCart() {
-    this.cartService.cartSub.subscribe((cart) => {
-      this.cart = cart;
-    });
+    this.subscription.push(
+      this.cartService.cartSub.subscribe((cart) => {
+        this.cart = cart;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 
   calculateSubtotalPrice(): number {

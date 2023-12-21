@@ -12,7 +12,7 @@ import { CourseService } from '../../../services/course.service';
 })
 export class AdminCoursesComponent implements OnInit, OnDestroy {
   courses: Course[] = [];
-  subscription: Subscription;
+  subscription: Subscription[] = [];
   allCourses: Course[] = [];
   anotherSubscription: Subscription;
   courseButton: boolean = true;
@@ -27,31 +27,39 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
   private courseDisabledSubject = new Subject<CourseStatus[]>();
 
   ngOnInit(): void {
-    this.courseDataService.fetchPendingCourseReqeust().subscribe((approved) => {
-      this.courseService.setPendingCourses(approved);
-    });
-    this.courseDataService.fetchCourses().subscribe((courses) => {
-      this.allCourses = courses;
-    });
+    this.subscription.push(
+      this.courseDataService
+        .fetchPendingCourseReqeust()
+        .subscribe((approved) => {
+          this.courseService.setPendingCourses(approved);
+        })
+    );
+    this.subscription.push(
+      this.courseDataService.fetchCourses().subscribe((courses) => {
+        this.allCourses = courses;
+      })
+    );
 
-    this.courseDisabledSubject.subscribe();
+    this.subscription.push(this.courseDisabledSubject.subscribe());
 
-    this.subscription = this.courseService.coursesList.subscribe(
-      (courses: Course[]): void => {
+    this.subscription.push(
+      this.courseService.coursesList.subscribe((courses: Course[]): void => {
         this.courses = courses;
         this.allCourses = this.courseService.getAllCourses();
-      }
+      })
     );
-    this.subscription = this.courseDataService.updateCourseList.subscribe(
-      (courses) => {
+    this.subscription.push(
+      this.courseDataService.updateCourseList.subscribe((courses) => {
         this.filterCourse(courses);
-      }
+      })
     );
-    this.subscription = this.courseDataService.disableCourseList.subscribe(
-      (course) => {
+
+    this.subscription.push(
+      this.courseDataService.disableCourseList.subscribe((course) => {
         this.allCourses = this.courseService.getAllCourses();
-      }
+      })
     );
+
     window.addEventListener('scroll', () => {
       if (this.isAtTableBottom()) {
         this.loadMoreCourses();
@@ -73,7 +81,6 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
 
   rejectCourse(course: Course) {
     this.isLoading = true;
-    console.log(course);
     this.courseDataService.approveCourse(course, 'reject');
     this.isLoading = false;
   }
@@ -89,7 +96,7 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 
   private loadMoreCourses(): void {

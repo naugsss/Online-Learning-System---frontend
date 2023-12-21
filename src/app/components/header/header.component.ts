@@ -16,24 +16,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userRole = 4;
   isAdmin: boolean = false;
   isMentor: boolean = false;
-  private userSub: Subscription;
+  subscription: Subscription[] = [];
 
   constructor(
     private authService: AuthService,
     private cartService: cartService
   ) {}
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe((user) => {
-      this.isAuthenticated = !!user;
-      if (user) {
-        this.isAdmin = user.role === 1;
-        this.isMentor = user.role === 3;
-      }
-    });
+    this.subscription.push(
+      this.authService.user.subscribe((user) => {
+        this.isAuthenticated = !!user;
+        if (user) {
+          this.isAdmin = user.role === 1;
+          this.isMentor = user.role === 3;
+        }
+      })
+    );
 
-    this.cartService.getCartItemNumber().subscribe((count) => {
-      this.cartItemNumber = count;
-    });
+    this.subscription.push(
+      this.cartService.getCartItemNumber().subscribe((count) => {
+        this.cartItemNumber = count;
+      })
+    );
   }
   toggleProfileOptions() {
     this.showProfileOptions = !this.showProfileOptions;
@@ -43,8 +47,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.showProfileOptions = false;
   }
 
-  ngOnDestroy() {
-    this.userSub.unsubscribe();
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
     this.showProfileOptions = false;
   }
 }
