@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
-
+import * as constants from '../../../../assets/constants/mentor.constants';
 export interface Faq {
   question: string;
   answer: string;
@@ -15,6 +15,7 @@ export interface Faq {
 export class AddFaqComponent {
   constructor(private courseDataService: CourseDataService) {}
   @ViewChild('courseName') inputText: HTMLInputElement;
+  constants = constants.default;
   faq: string = '';
   faqAnswer: string = '';
   name: string = '';

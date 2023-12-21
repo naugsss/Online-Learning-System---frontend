@@ -1,6 +1,6 @@
 <div class="container">
   <div class="mentor-earning">
-    <h1>My Earnings</h1>
+    <h1>{{ constants.HEADING }}</h1>
     <hr />
 
     <div class="no-earning">
@@ -11,16 +11,16 @@
           height="300px"
         />
         <p class="subheading">
-          Your haven't made any course till now, please add a course to earn.
+          {{ constants.NO_COURSE }}
         </p>
       </div>
     </div>
 
     <table class="table" *ngIf="mentorEarnings.length > 0">
       <tr>
-        <th>Name</th>
-        <th>Course</th>
-        <th>Earning</th>
+        <th>{{ constants.NAME }}</th>
+        <th>{{ constants.COURSE }}</th>
+        <th>{{ constants.EARNING }}</th>
       </tr>
       <tr *ngFor="let mentor of mentorEarnings">
         <td>
@@ -41,7 +41,7 @@
 
   <div class="add-course">
     <div class="add-new-course">
-      <h1>Add a new course</h1>
+      <h1>{{ constants.ADD_COURSE }}</h1>
       <hr />
       <div class="form-container">
         <div class="heading">
@@ -50,14 +50,14 @@
             (click)="addCourseButtonClicked()"
             [ngClass]="{ active: changeComponent }"
           >
-            Add new course
+            {{ constants.ADD_COURSE }}
           </button>
           <button
             class="add-faq-btn"
             (click)="addFaqButtonClicked()"
             [ngClass]="{ active: changeComponent === false }"
           >
-            Add FAQ
+            {{ constants.ADD_FAQ }}
           </button>
         </div>
 

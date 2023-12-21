@@ -5,6 +5,7 @@ import { Course } from './course.model';
 import { cartService } from '../../../services/cart.service';
 import { CoursePreviewComponent } from '../course-preview/course-preview.component';
 import { CourseService } from '../../../services/course.service';
+import * as constants from '../../../../assets/constants/course.constants';
 
 @Component({
   selector: 'app-course',
@@ -16,6 +17,7 @@ export class CourseComponent {
   @Input() index: number;
   @Input() price: boolean = true;
   @ViewChild(CoursePreviewComponent) coursePreview: CoursePreviewComponent;
+  constants = constants.default;
 
   constructor(
     private cartService: cartService,

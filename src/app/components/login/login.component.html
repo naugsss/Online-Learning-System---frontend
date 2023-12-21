@@ -1,7 +1,7 @@
 <div class="container">
   <div class="signup">
     <div class="signup-form">
-      <h2>Welcome Back</h2>
+      <h2>{{ constants.LOGIN_HEADING }}</h2>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
         <div class="form-group">
           <label for="username">Username</label>
@@ -16,9 +16,9 @@
             pattern="^\S+$"
             #username="ngModel"
           />
-          <small *ngIf="username.invalid && username.touched"
-            >* Username is a required property</small
-          >
+          <small *ngIf="username.invalid && username.touched">{{
+            constants.USERNAME_REQ
+          }}</small>
         </div>
 
         <div class="password">
@@ -34,20 +34,22 @@
             #password="ngModel"
           />
           <i class="fa-solid fa-eye" (click)="toggleIcon()"></i>
-          <small *ngIf="password.invalid && password.touched"
-            >* Password is a required property</small
-          >
+          <small *ngIf="password.invalid && password.touched">{{
+            constants.PASSWORD_REQ
+          }}</small>
         </div>
 
         <div>
           <button class="btn" type="submit" [disabled]="!loginForm.valid">
-            Log In
+            {{ constants.LOG_IN }}
           </button>
         </div>
         <div>
           <p>
-            Don't have a account?
-            <span class="no-account"><a routerLink="/signup">Sign Up</a></span>
+            {{ constants.NO_ACCOUNT }}
+            <span class="no-account"
+              ><a routerLink="/signup">{{ constants.SIGN_UP }}</a></span
+            >
           </p>
         </div>
       </form>

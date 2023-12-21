@@ -17,7 +17,7 @@
     </div>
 
     <div class="feedback">
-      <h2>Add Feedback</h2>
+      <h2>{{ constants.ADD_FEEDBACK }}</h2>
       <hr />
       <div class="add-feedback">
         <fieldset class="rating">
@@ -66,14 +66,16 @@
           [(ngModel)]="feedbackText"
         ></textarea>
 
-        <button class="btn" (click)="submitFeedback()">Add Feedback</button>
+        <button class="btn" (click)="submitFeedback()">
+          {{ constants.ADD_FEEDBACK }}
+        </button>
       </div>
     </div>
   </div>
 
   <div class="sidebar">
     <div class="course-lectures">
-      <h3>Course Content</h3>
+      <h3>{{ constants.CONTENT }}</h3>
 
       <div *ngFor="let video of videos">
         <p class="lecture" (click)="onVideoClick(video)">{{ video.title }}</p>

@@ -16,17 +16,17 @@
   <div class="course-section">
     <div class="course-container">
       <div class="courses">
-        <h2>A broad selection of courses</h2>
+        <h2>{{ constants.TITLE }}</h2>
         <hr />
         <div class="course-card">
           <app-course
-            *ngFor="let courseEl of filteredCourse; let i = index"
+            *ngFor="let courseEl of filteredCourse; let course = index"
             [course]="courseEl"
-            [index]="i"
+            [index]="course"
           ></app-course>
         </div>
         <button class="load-more" (click)="loadMoreCourses()">
-          Load more courses
+          {{ constants.LOAD_MORE }}
         </button>
         <!-- <router-outlet></router-outlet> -->
         <!-- <app-loading-spinner *ngIf="loadingMore"></app-loading-spinner> -->

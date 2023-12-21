@@ -4,7 +4,7 @@ import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
-
+import * as constants from '../../../assets/constants/auth.constants';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,6 +18,7 @@ export class SignupComponent {
     private router: Router
   ) {}
   hide: boolean = true;
+  constants = constants.default;
 
   onSubmit(authForm: NgForm) {
     const username = authForm.value.username;

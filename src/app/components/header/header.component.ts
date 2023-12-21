@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { cartService } from '../../services/cart.service';
+import * as constants from '../../../assets/constants/home_constants';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAdmin: boolean = false;
   isMentor: boolean = false;
   subscription: Subscription[] = [];
+  constants = constants.default;
 
   constructor(
     private authService: AuthService,

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>My Learning</h1>
+  <h1>{{ constants.HEADING }}</h1>
   <hr />
 
   <div class="empty-page">
@@ -10,16 +10,20 @@
         alt="my learning image"
         height="300px"
       />
-      <p class="subheading">You haven't purchased any course. Please purchase to access it</p>
-      <button class="btn" routerLink="/courses">Explore Courses</button>
+      <p class="subheading">
+        {{ constants.NO_COURSE }}
+      </p>
+      <button class="btn" routerLink="/courses">
+        {{ constants.EXPLORE_COURSE }}
+      </button>
     </div>
   </div>
   <div class="courses" *ngIf="courses.length > 0">
     <app-course
       class="course-card"
-      *ngFor="let courseEl of courses; let i = index"
+      *ngFor="let courseEl of courses; let course = index"
       [course]="courseEl"
-      [index]="i"
+      [index]="course"
       [price]="false"
     ></app-course>
   </div>

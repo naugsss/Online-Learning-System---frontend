@@ -1,10 +1,10 @@
 <div class="faq-form">
   <form #faqForm="ngForm">
-    <h2>FAQ Details</h2>
+    <h2>{{ constants.FAQ_HEADING }}</h2>
 
     <div class="faq">
       <div>
-        <label for="course-name">Course name</label>
+        <label for="course-name">{{ constants.COURSE_NAME }}</label>
         <input
           type="text"
           class="form-style"
@@ -15,53 +15,53 @@
           required
           #courseName="ngModel"
         />
-        <small *ngIf="courseName.invalid && courseName.touched"
-          >* Course name is a required property</small
-        >
+        <small *ngIf="courseName.invalid && courseName.touched">{{
+          constants.COURSE_NAME_REQ
+        }}</small>
       </div>
 
-      <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+      <div *ngFor="let faq of faqs; let faqItem = index" class="faq-item">
         <div class="form-group">
-          <label for="question-{{ i }}">Question</label>
+          <label for="question-{{ faqItem }}">Question</label>
           <input
             type="text"
-            id="question-{{ i }}"
+            id="question-{{ faqItem }}"
             name="question"
             class="form-style"
             placeholder="Question"
-            [(ngModel)]="faqs[i].question"
+            [(ngModel)]="faqs[faqItem].question"
             required
             #question="ngModel"
           />
-          <small *ngIf="question.invalid && question.touched"
-            >* Question is a required property</small
-          >
+          <small *ngIf="question.invalid && question.touched">{{
+            constants.QUESTION_REQ
+          }}</small>
         </div>
         <div>
-          <label for="answer-{{ i }}">Answer</label>
+          <label for="answer-{{ faqItem }}">Answer</label>
           <input
             type="text"
             name="answer"
-            id="answer-{{ i }}"
+            id="answer-{{ faqItem }}"
             class="form-style"
             placeholder="Answer"
-            [(ngModel)]="faqs[i].answer"
+            [(ngModel)]="faqs[faqItem].answer"
             required
             #answer="ngModel"
           />
-          <small *ngIf="answer.invalid && answer.touched"
-            >* Answer is a required property</small
-          >
+          <small *ngIf="answer.invalid && answer.touched">{{
+            constants.ANSWER_REQ
+          }}</small>
         </div>
       </div>
     </div>
 
     <div class="faq-buttons">
       <button type="button" class="add-faq-button" (click)="addFaq()">
-        Add FAQ
+        {{ constants.ADD_FAQ }}
       </button>
       <button type="button" class="remove-button" (click)="removeFaq()">
-        Remove
+        {{ constants.REMOVE }}
       </button>
     </div>
 
@@ -71,7 +71,7 @@
         (click)="onSubmitFaq()"
         [disabled]="!faqForm.valid"
       >
-        Submit
+        {{ constants.SUBMIT }}
       </button>
     </div>
   </form>

@@ -4,7 +4,7 @@ import { cartService } from '../../services/cart.service';
 import { Course } from '../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Subscription } from 'rxjs';
-
+import * as constants from '../../../assets/constants/cart.constants';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class CartComponent implements OnInit {
   subscription: Subscription[] = [];
   emptyCartImage: string = null;
+  constants = constants.default;
   constructor(
     private cartService: cartService,
     private courseDataService: CourseDataService

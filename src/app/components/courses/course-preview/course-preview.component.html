@@ -1,10 +1,6 @@
 <div class="preview-container">
   <div class="course-description">
-    <img
-      src="../../../../assets/courses/onlinecourse2.webp"
-      alt=""
-      height="250px"
-    />
+    <img src="../../../../assets/courses/onlinecourse2.webp" height="250px" />
     <div class="course-details">
       <p class="course-heading">{{ selectedCourse.name | titlecase }}</p>
       <div class="stars">
@@ -60,7 +56,7 @@
   </div>
 
   <div class="feedback-section" *ngIf="feedback.length > 0">
-    <h2>Look what others have to say about us</h2>
+    <h2>{{ constants.FEEDBACK }}</h2>
     <hr />
     <div class="courses-feedback">
       <div class="course-feedback" *ngFor="let fb of feedback">

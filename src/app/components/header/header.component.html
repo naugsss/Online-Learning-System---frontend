@@ -1,6 +1,6 @@
 <div class="page-header">
   <div class="page-header-logo">
-    <h2>Watch & Learn</h2>
+    <h2>{{ constants.TITLE }}</h2>
   </div>
 
   <div>
@@ -9,20 +9,20 @@
         routerLink="home"
         [routerLinkActive]="'active'"
         [routerLinkActiveOptions]="{ exact: true }"
-        >HOME</a
+        >{{ constants.HOME }}</a
       >
       <a
         routerLink="courses"
         [routerLinkActive]="'active'"
         [routerLinkActiveOptions]="{ exact: true }"
-        >COURSES</a
+        >{{ constants.COURSES }}</a
       >
     </div>
   </div>
 
   <div class="page-header-login-logout">
     <button class="login-btn" routerLink="login" *ngIf="!isAuthenticated">
-      Log In
+      {{ constants.LOGIN }}
     </button>
     <div *ngIf="isAuthenticated" class="header-right">
       <div>
@@ -44,15 +44,17 @@
 
       <div class="profile-container" *ngIf="showProfileOptions">
         <button class="profile-btn admin" routerLink="admin" *ngIf="isAdmin">
-          Dashboard
+          {{ constants.DASHBOARD }}
         </button>
         <button class="profile-btn mentor" routerLink="mentor" *ngIf="isMentor">
-          Dashboard
+          {{ constants.DASHBOARD }}
         </button>
         <button class="profile-btn my-learning" routerLink="myLearning">
-          My Learning
+          {{ constants.MYLEARNING }}
         </button>
-        <button class="profile-btn logout" (click)="onLogout()">Log Out</button>
+        <button class="profile-btn logout" (click)="onLogout()">
+          {{ constants.LOGOUT }}
+        </button>
       </div>
     </div>
   </div>

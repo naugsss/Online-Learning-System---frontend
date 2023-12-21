@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Course } from '../../courses/course/course.model';
 import { CourseService } from '../../../services/course.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
+import * as constants from '../../../../assets/constants/my_learning.constants';
 
 interface Video {
   title: string;
@@ -16,6 +17,7 @@ interface Video {
   styleUrls: ['./course-content.component.css'],
 })
 export class CourseContentComponent implements OnInit {
+  constants = constants.default;
   selectedRating: number = 0;
   feedbackText: string = '';
   isLoadingVideo: boolean = false;

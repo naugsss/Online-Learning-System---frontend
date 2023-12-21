@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { CourseDataService } from 'src/app/shared/courseData.service';
+import * as constants from '../../../../assets/constants/mentor.constants';
 
 @Component({
   selector: 'app-new-course',
@@ -10,7 +12,7 @@ import { CourseDataService } from 'src/app/shared/courseData.service';
 export class NewCourseComponent {
   constructor(private courseDataService: CourseDataService) {}
   @ViewChild('courseForm') form: NgForm;
-
+  constants = constants.default;
   onSubmit(): void {
     const courseData = {
       name: this.form.value.name,

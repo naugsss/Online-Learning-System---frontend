@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="heading">Create an account</h2>
+  <h2 class="heading">{{ constants.CREATE_ACCOUNT }}</h2>
 
   <div class="signup">
     <div class="signup-form">
@@ -9,7 +9,7 @@
         (ngSubmit)="onSubmit(signupForm)"
       >
         <div>
-          <label for="name">Name</label>
+          <label for="name">{{ constants.NAME }}</label>
           <input
             type="text"
             placeholder="Enter name"
@@ -22,12 +22,12 @@
             pattern="^\S+$"
           />
 
-          <small *ngIf="name.invalid && name.touched"
-            >* Name is a required property</small
-          >
+          <small *ngIf="name.invalid && name.touched">{{
+            constants.NAME_REQ
+          }}</small>
         </div>
         <div>
-          <label for="username">Username</label>
+          <label for="username">{{ constants.USERNAME }}</label>
           <input
             class="form-style"
             type="text"
@@ -39,12 +39,12 @@
             #username="ngModel"
             pattern="^\S+$"
           />
-          <small *ngIf="username.invalid && username.touched"
-            >* Username is a required property</small
-          >
+          <small *ngIf="username.invalid && username.touched">{{
+            constants.USERNAME_REQ
+          }}</small>
         </div>
         <div>
-          <label for="email">Email</label>
+          <label for="email">{{ constants.EMAIL }}</label>
           <input
             type="email"
             placeholder="Enter email address"
@@ -57,11 +57,11 @@
             pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}"
           />
           <small *ngIf="email.invalid && email.touched"
-            >* Email is a required property</small
+            >{{ constants.EMAIL_REQ }}y</small
           >
         </div>
         <div class="password">
-          <label for="password">Password</label>
+          <label for="password">{{ constants.PASSWORD }}</label>
           <input
             [type]="hide ? 'password' : 'text'"
             placeholder="Enter password"
@@ -75,12 +75,12 @@
           />
           <i class="fa-solid fa-eye" (click)="toggleIcon()"></i>
 
-          <small *ngIf="password.invalid && password.touched"
-            >* Password is a required property</small
-          >
+          <small *ngIf="password.invalid && password.touched">{{
+            constants.PASSWORD_REQ
+          }}</small>
         </div>
         <div class="re-password">
-          <label for="repassword">Re-enter password</label>
+          <label for="repassword">{{ constants.REPASSWORD }}</label>
           <input
             [type]="hide ? 'password' : 'text'"
             placeholder="Re-enter password"
@@ -93,18 +93,22 @@
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$"
           />
           <i class="fa-solid fa-eye" (click)="toggleIcon()"></i>
-          <small *ngIf="repassword.invalid && repassword.touched"
-            >* Password is a required property</small
-          >
-          <small *ngIf="passwordMatch">* Password do not match</small>
+          <small *ngIf="repassword.invalid && repassword.touched">{{
+            constants.PASSWORD_REQ
+          }}</small>
+          <small *ngIf="passwordMatch">{{ constants.PASSWORD_MATCH }}</small>
         </div>
         <div>
-          <button class="btn" [disabled]="!signupForm.valid">Sign Up</button>
+          <button class="btn" [disabled]="!signupForm.valid">
+            {{ constants.SIGN_UP }}
+          </button>
         </div>
         <div>
           <p>
             Already have an account?
-            <span class="have-account"><a routerLink="/login">Log In</a></span>
+            <span class="have-account"
+              ><a routerLink="/login">{{ constants.LOG_IN }}</a></span
+            >
           </p>
         </div>
       </form>

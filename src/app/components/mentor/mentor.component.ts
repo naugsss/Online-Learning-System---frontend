@@ -1,8 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
-
+import * as constants from '../../../assets/constants/mentor.constants';
 @Component({
   selector: 'app-mentor',
   templateUrl: './mentor.component.html',
@@ -10,22 +10,26 @@ import { CourseDataService } from 'src/app/shared/courseData.service';
 })
 export class MentorComponent {
   mentorEarnings: any = [];
+  constants = constants.default;
   changeComponent: boolean = true;
 
   constructor(private courseDataService: CourseDataService) {}
-  subscription: Subscription;
+  subscription: Subscription[] = [];
 
   ngOnInit(): void {
-    this.courseDataService.fetchMentorEarning().subscribe((earning) => {
-      console.log(earning);
-      this.mentorEarnings = earning;
-    });
-
-    this.subscription = this.courseDataService.updateEarnings.subscribe(() => {
+    this.subscription.push(
       this.courseDataService.fetchMentorEarning().subscribe((earning) => {
         this.mentorEarnings = earning;
-      });
-    });
+      })
+    );
+
+    this.subscription.push(
+      this.courseDataService.updateEarnings.subscribe(() => {
+        this.courseDataService.fetchMentorEarning().subscribe((earning) => {
+          this.mentorEarnings = earning;
+        });
+      })
+    );
   }
 
   addCourseButtonClicked() {
@@ -34,5 +38,9 @@ export class MentorComponent {
 
   addFaqButtonClicked() {
     this.changeComponent = false;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((subscription) => subscription.unsubscribe());
   }
 }

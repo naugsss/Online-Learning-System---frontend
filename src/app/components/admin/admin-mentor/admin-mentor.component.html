@@ -1,6 +1,6 @@
 <div class="container">
   <div class="add-mentor">
-    <h2>Add a new mentor</h2>
+    <h2>{{ constants.HEADING }}</h2>
     <hr />
     <div class="add-new-mentor">
       <input
@@ -12,25 +12,25 @@
         required
         pattern="^\S+$"
       />
-      <small *ngIf="searchInput.invalid && searchInput.touched"
-        >* Username is a required property</small
-      >
+      <small *ngIf="searchInput.invalid && searchInput.touched">{{
+        constants.USERNAME_REQ
+      }}</small>
       <button
         class="add-mentor-btn"
         (click)="onButtonClicked()"
         [disabled]="!searchInput.valid"
       >
-        Add Mentor
+        {{ constants.ADD_MENTOR }}
       </button>
     </div>
   </div>
-  <h2>Mentor Details</h2>
+  <h2>{{ constants.DETAILS }}</h2>
   <hr />
   <table class="table">
     <tr>
-      <th>Name</th>
-      <th>Course</th>
-      <th>Earning</th>
+      <th>{{ constants.NAME }}</th>
+      <th>{{ constants.COURSE }}</th>
+      <th>{{ constants.EARNING }}</th>
     </tr>
     <tr *ngFor="let mentor of mentorEarnings">
       <td>

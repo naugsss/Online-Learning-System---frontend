@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from './course/course.model';
 import { CourseService } from '../../services/course.service';
+import * as constants from '../../../assets/constants/courses.constants';
 
 @Component({
   selector: 'app-courses',
@@ -26,6 +27,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   loadingMore: boolean = false;
   moreCourses: boolean = true;
   selectedCourse: Course;
+  constants = constants.default;
 
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
 
