@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import * as constants from '../../../assets/constants/page_not_found.constants';
+import * as constants from '../../shared/constants/page_not_found.constants';
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',

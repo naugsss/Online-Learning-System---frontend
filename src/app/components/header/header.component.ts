@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { cartService } from '../../services/cart.service';
-import * as constants from '../../../assets/constants/home_constants';
+import * as constants from '../../shared/constants/home_constants';
 
 @Component({
   selector: 'app-header',

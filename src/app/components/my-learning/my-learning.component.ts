@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { CourseService } from '../../services/course.service';
 import { Course } from '../courses/course/course.model';
-import * as constants from '../../../assets/constants/my_learning.constants';
+import * as constants from '../../shared/constants/my_learning.constants';
 
 @Component({
   selector: 'app-my-learning',

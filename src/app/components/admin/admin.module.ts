@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { AdminMentorComponent } from './admin-mentor/admin-mentor.component';
 import { AdminCoursesComponent } from './admin-courses/admin-courses.component';
-import { AdminGuard } from './admin.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {

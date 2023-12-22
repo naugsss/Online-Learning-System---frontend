@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from '../courses/course/course.model';
 import { CourseService } from '../../services/course.service';
-import * as constants from '../../../assets/constants/home_constants';
+import * as constants from '../../shared/constants/home_constants';
 
 @Component({
   selector: 'app-home',

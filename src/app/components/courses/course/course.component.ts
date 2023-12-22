@@ -5,7 +5,7 @@ import { Course } from './course.model';
 import { cartService } from '../../../services/cart.service';
 import { CoursePreviewComponent } from '../course-preview/course-preview.component';
 import { CourseService } from '../../../services/course.service';
-import * as constants from '../../../../assets/constants/course.constants';
+import * as constants from '../../../shared/constants/course.constants';
 
 @Component({
   selector: 'app-course',

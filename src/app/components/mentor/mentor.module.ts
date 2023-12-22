@@ -5,7 +5,7 @@ import { NewCourseComponent } from './new-course/new-course.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { MentorGuard } from 'src/app/components/mentor/mentor.guard';
+import { MentorGuard } from 'src/app/components/mentor/guards/mentor.guard';
 
 const routes: Routes = [
   {

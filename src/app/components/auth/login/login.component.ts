@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 
 import { AuthService } from 'src/app/services/auth.service';
-import * as constants from '../../../assets/constants/auth.constants';
+import * as constants from '../../../shared/constants/auth.constants';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

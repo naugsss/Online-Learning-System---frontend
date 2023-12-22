@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Course } from '../../courses/course/course.model';
 import { CourseService } from '../../../services/course.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import * as constants from '../../../../assets/constants/my_learning.constants';
+import * as constants from '../../../shared/constants/my_learning.constants';
 
 interface Video {
   title: string;

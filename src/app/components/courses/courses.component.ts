@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Course } from './course/course.model';
 import { CourseService } from '../../services/course.service';
-import * as constants from '../../../assets/constants/courses.constants';
+import * as constants from '../../shared/constants/courses.constants';
 
 @Component({
   selector: 'app-courses',

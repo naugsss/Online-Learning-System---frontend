@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
-import { User } from '../components/login/user.model';
+import { User } from '../components/auth/login/user.model';
 
 interface AuthResponseData {
   code: number;

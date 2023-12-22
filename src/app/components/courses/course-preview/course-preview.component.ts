@@ -5,7 +5,7 @@ import { CourseService } from '../../../services/course.service';
 import { cartService } from '../../../services/cart.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { Subscription } from 'rxjs';
-import * as constants from '../../../../assets/constants/courses.constants';
+import * as constants from '../../../shared/constants/courses.constants';
 @Component({
   selector: 'app-course-preview',
   templateUrl: './course-preview.component.html',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SignupComponent } from './components/signup/signup.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -17,14 +17,14 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () =>
-      import('./components/signup/signup.module').then(
+      import('./components/auth/signup/signup.module').then(
         (module) => module.SignUpModule
       ),
   },
   {
     path: 'login',
     loadChildren: () =>
-      import('./components/login/login.module').then(
+      import('./components/auth/login/login.module').then(
         (module) => module.LoginModule
       ),
   },

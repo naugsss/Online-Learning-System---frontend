@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import * as constants from '../../../../assets/constants/mentor.constants';
+import * as constants from '../../../shared/constants/mentor.constants';
 
 @Component({
   selector: 'app-new-course',

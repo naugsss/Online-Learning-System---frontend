@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import * as constants from '../../../../assets/constants/admin.constants';
+import * as constants from '../../../shared/constants/admin.constants';
 
 @Component({
   selector: 'app-admin-mentor',

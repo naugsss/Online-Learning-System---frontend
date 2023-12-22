@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
-import * as constants from '../../../assets/constants/mentor.constants';
+import * as constants from '../../shared/constants/mentor.constants';
 @Component({
   selector: 'app-mentor',
   templateUrl: './mentor.component.html',
