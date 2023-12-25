@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 import { User } from '../components/auth/login/user.model';
@@ -69,7 +70,6 @@ export class AuthService {
       const decodedToken: loginResponse = jwtDecode(token);
 
       if (decodedToken.expire < new Date().getTime()) {
-        console.log('calling autoLogout');
         this.autoLogout(new Date().getTime() - decodedToken.expire);
       } else {
         const user = new User(userData.username, userData.role, userData.token);

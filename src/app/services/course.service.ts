@@ -46,6 +46,7 @@ export class CourseService {
     this.pendingCourses = course;
     this.coursesList.next(this.pendingCourses.slice());
   }
+
   getPendingCourses() {
     return this.pendingCourses.slice();
   }
@@ -54,6 +55,7 @@ export class CourseService {
     this.purchasedCourses = course;
     this.coursesList.next(this.purchasedCourses.slice());
   }
+  
   getPurchasedCourses() {
     return this.purchasedCourses.slice();
   }

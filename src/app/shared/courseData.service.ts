@@ -54,9 +54,7 @@ export class CourseDataService {
       next: (response) => {
         console.log(response);
         this.disableCourseList.next(course);
-        if (
-          response['message'] === 'Course marked as deactivated successfully'
-        ) {
+        if (response['code'] === 200) {
           this.toast.info({
             detail: response['message'],
             summary: 'Now course is not available for purchase',
@@ -75,14 +73,13 @@ export class CourseDataService {
       .subscribe({
         next: (response) => {
           this.updateCourseList.next(course);
-          console.log(response);
 
-          if (response['message'] === 'Course approved successfully') {
+          if (response['code'] === 202) {
             this.toast.info({
               detail: 'Course approved successfully',
               summary: 'Now course is available for purchase',
             });
-          } else if (response['message'] === 'Course rejected') {
+          } else if (response['code'] === 200) {
             this.toast.info({
               detail: 'Course rejected successfully',
             });
@@ -106,22 +103,23 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          if (response['message'] === 'No such username exists.') {
+          if (response['code'] === 201) {
+            this.toast.success({
+              detail: response['message'],
+              summary: 'Now he can also add courses',
+            });
+          }
+        },
+        error: (error) => {
+          if (error.error.error.code === 404) {
             this.toast.warning({
               detail: 'No such user exists.',
               summary: 'Please enter another username',
             });
-          } else if (
-            response['message'] === 'This person is already a mentor'
-          ) {
+          } else if (error.error.error.code === 409) {
             this.toast.warning({
-              detail: response['message'],
+              detail: error.error.error.message,
               summary: 'Please write another username',
-            });
-          } else if (response['message'] === 'Mentor added successfully') {
-            this.toast.success({
-              detail: response['message'],
-              summary: 'Now he can also add courses',
             });
           } else {
             this.toast.error({
@@ -143,7 +141,7 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          if (response['message'] === 'FAQ added successfully') {
+          if (response['code'] === 200) {
             this.toast.success({
               detail: 'Success!',
               summary: response['message'],
@@ -162,17 +160,10 @@ export class CourseDataService {
       })
       .subscribe({
         next: (response) => {
-          if (response['message'] === 'Feedback added successfully') {
+          if (response['code'] === 200) {
             this.toast.success({
               detail: 'Success!',
               summary: response['message'],
-            });
-          } else if (
-            response['message'] ===
-            "You've already added a feedback to this course"
-          ) {
-            this.toast.info({
-              detail: response['message'],
             });
           }
         },
@@ -181,6 +172,10 @@ export class CourseDataService {
             this.toast.error({
               detail: 'You cannot add feedback to this course',
               summary: 'Please purchase the course to add feedback.',
+            });
+          } else if (error.error.error.code === 409) {
+            this.toast.info({
+              detail: error.error.error.message,
             });
           }
         },
@@ -198,20 +193,10 @@ export class CourseDataService {
       .subscribe({
         next: (response) => {
           this.updateEarnings.next(true);
-          if (
-            response['message'] === 'Course approval request sent to admin.'
-          ) {
+          if (response['code'] === 201) {
             this.toast.info({
               detail: 'Course approval request sent to admin.',
               summary: 'Please wait for the admin to approve the course',
-            });
-          } else if (
-            (response['message'] =
-              'Another course with the same name already exists. Please try again.')
-          ) {
-            this.toast.warning({
-              detail: 'Another course with the same name already exists.',
-              summary: 'Please add a course with different name',
             });
           }
         },
@@ -220,6 +205,11 @@ export class CourseDataService {
             this.toast.error({
               detail: 'You are not allowed to add a course',
               summary: 'Please ask mentor to do this.',
+            });
+          } else if (error.error.error.code === 409) {
+            this.toast.warning({
+              detail: 'Another course with the same name already exists.',
+              summary: 'Please add a course with different name',
             });
           }
         },
@@ -231,12 +221,7 @@ export class CourseDataService {
       .post('http://127.0.0.1:8000/courses/' + course.name, {}, {})
       .subscribe({
         next: (response) => {
-          if (response['message'] === "You've already purchased this course.") {
-            this.toast.info({
-              detail: 'Course already purchased',
-              summary: 'Visit my learning section to access the course',
-            });
-          } else {
+          if (response['code'] === 200) {
             this.toast.success({
               detail: response['message'],
               summary: 'Visit my learning section to access the course',
@@ -244,10 +229,17 @@ export class CourseDataService {
           }
         },
         error: (error) => {
-          this.toast.error({
-            detail: 'There was an error in purchasing the course.',
-            summary: 'Please try again',
-          });
+          if (error.error.error.code === 409) {
+            this.toast.info({
+              detail: error.error.error.message,
+              summary: 'Please visit my learning section to access the course',
+            });
+          } else {
+            this.toast.error({
+              detail: 'There was an error in purchasing the course.',
+              summary: 'Please try again',
+            });
+          }
         },
       });
   }
