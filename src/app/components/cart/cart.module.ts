@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CartComponent } from './cart.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+import { CartComponent } from './cart.component';
 
 const routes: Routes = [
   {

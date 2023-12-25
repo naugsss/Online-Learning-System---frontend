@@ -5,6 +5,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -14,7 +15,6 @@ export class DelayInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(request);
     return next.handle(request).pipe(delay(200));
   }
 }

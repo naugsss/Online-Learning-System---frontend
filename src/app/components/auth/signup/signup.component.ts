@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+
+import { NgToastService } from 'ng-angular-popup';
 
 import { AuthService } from 'src/app/services/auth.service';
 import * as constants from '../../../shared/constants/auth.constants';

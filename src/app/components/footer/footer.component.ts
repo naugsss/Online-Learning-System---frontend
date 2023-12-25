@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import * as constants from '../../shared/constants/home_constants';
 
 @Component({

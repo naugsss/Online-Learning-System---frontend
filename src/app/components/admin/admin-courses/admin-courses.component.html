@@ -2,13 +2,13 @@
   <!-- pending course section -->
   <section class="request-container">
     <div class="pending-courses" *ngIf="courses.length > 0">
-      <h2>Pending course request</h2>
+      <h2>{{ constants.PENDING_COURSE_REQUEST }}</h2>
       <hr />
       <table class="table">
         <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Options</th>
+          <th>{{ constants.NAME }}</th>
+          <th>{{ constants.PRICE }}</th>
+          <th>{{ constants.OPTIONS }}</th>
         </tr>
         <tr *ngFor="let course of courses">
           <td>
@@ -25,10 +25,10 @@
           <td>
             <div class="approval-options">
               <button class="approve" (click)="approveCourse(course)">
-                Approve
+                {{ constants.APPROVE }}
               </button>
               <button class="reject" (click)="rejectCourse(course)">
-                Reject
+                {{ constants.REJECT }}
               </button>
               <!-- <app-loading-spinner *ngIf="isLoading"></app-loading-spinner> -->
             </div>
@@ -40,13 +40,13 @@
 
   <!-- all courses section -->
   <section class="courses-container">
-    <h2>All courses</h2>
+    <h2>{{ constants.ALL_COURSES }}</h2>
     <hr />
     <table class="table">
       <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Options</th>
+        <th>{{ constants.NAME }}</th>
+        <th>{{ constants.PRICE }}</th>
+        <th>{{ constants.OPTIONS }}</th>
       </tr>
       <tr *ngFor="let course of allCourses">
         <td>
@@ -70,7 +70,7 @@
                 course.status === 'deactive'
               "
             >
-              Disable
+              {{ constants.DISABLE }}
             </button>
             <!-- <app-loading-spinner *ngIf="isDisable"></app-loading-spinner> -->
           </div>

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import * as constants from '../../../shared/constants/mentor.constants';
+
 export interface Faq {
   question: string;
   answer: string;

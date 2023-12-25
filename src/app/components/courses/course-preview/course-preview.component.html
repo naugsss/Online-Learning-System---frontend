@@ -15,17 +15,17 @@
       <p class="course-price">₹ {{ selectedCourse.price }}</p>
       <div class="purchase-options">
         <button class="buy-now btn" (click)="onBuyNowClick(selectedCourse)">
-          Buy Now
+          {{ constants.BUY_NOW }}
         </button>
         <button class="add-to-cart btn" (click)="addTocart(selectedCourse)">
-          Add to Cart
+          {{ constants.ADD_TO_CART }}
         </button>
       </div>
     </div>
   </div>
 
   <div class="faq" *ngIf="faqs.length > 0">
-    <h2>FAQ</h2>
+    <h2>{{ constants.FAQ }}</h2>
     <hr />
     <div class="accordion accordion-flush" id="accordionFlushExample">
       <div class="accordion-item" *ngFor="let faq of faqs; let i = index">

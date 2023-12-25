@@ -6,7 +6,7 @@
       (click)="courseButtonClicked()"
       [ngClass]="{ active: changeComponent }"
     >
-      Courses
+      {{ constants.COURSES }}
     </button>
     <button
       class="btn"
@@ -14,7 +14,7 @@
       (click)="mentorButtonClicked()"
       [ngClass]="{ active: changeComponent === false }"
     >
-      Mentor
+      {{ constants.MENTOR }}
     </button>
   </div>
   <div class="admin-course" *ngIf="changeComponent">

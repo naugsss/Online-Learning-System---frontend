@@ -6,4 +6,13 @@ export default {
   NAME: 'Name',
   COURSE: 'Course',
   EARNING: 'Earning',
+  PRICE: 'Price',
+  OPTIONS: 'Options',
+  PENDING_COURSE_REQUEST: 'Pending Course Request',
+  APPROVE: 'Approve',
+  REJECT: 'Reject',
+  DISABLE: 'Disable',
+  ALL_COURSES: 'All Courses',
+  COURSES: 'Courses',
+  MENTOR: 'Mentor',
 };

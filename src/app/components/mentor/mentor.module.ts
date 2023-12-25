@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MentorComponent } from './mentor.component';
-import { AddFaqComponent } from './add-faq/add-faq.component';
-import { NewCourseComponent } from './new-course/new-course.component';
+import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+
+import { AddFaqComponent } from './add-faq/add-faq.component';
+import { NewCourseComponent } from './new-course/new-course.component';
 import { MentorGuard } from 'src/app/components/mentor/guards/mentor.guard';
+import { MentorComponent } from './mentor.component';
 
 const routes: Routes = [
   {

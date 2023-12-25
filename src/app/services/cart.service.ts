@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
+
 import { NgToastService } from 'ng-angular-popup';
 import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
 
 import { Course } from '../components/courses/course/course.model';
-
+import * as constants from '../shared/constants/cart.constants';
 @Injectable({
   providedIn: 'root',
 })
 export class cartService {
+  constants = constants.default;
   private cart: Course[] = [];
   public cartItemNumber: number = 0;
   emptyCartImage: string = 'src/assets/cart/empty.svg';
@@ -22,7 +24,7 @@ export class cartService {
     this.cartSub.next(this.cart);
     this.cartItemNumberSub.next(this.cartItemNumber);
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.toast.success({ detail: 'Course added successfully to the cart' });
+    this.toast.success({ detail: this.constants.COURSE_ADDED_TO_CART });
   }
 
   removeFromCart(courseName: string) {

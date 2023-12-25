@@ -4,6 +4,7 @@ import { Subject, Subscription } from 'rxjs';
 import { Course, CourseStatus } from '../../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import { CourseService } from '../../../services/course.service';
+import * as constants from '../../../shared/constants/admin.constants';
 
 @Component({
   selector: 'app-admin-courses',
@@ -15,6 +16,7 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
   allCourses: Course[] = [];
   anotherSubscription: Subscription;
+  constants = constants.default;
   courseButton: boolean = true;
   currentPage: number = 1;
   isLoading: boolean = false;

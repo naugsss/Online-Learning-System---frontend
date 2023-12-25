@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
 
 import { Course } from '../../courses/course/course.model';
