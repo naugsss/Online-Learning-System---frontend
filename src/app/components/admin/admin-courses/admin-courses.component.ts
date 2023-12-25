@@ -69,25 +69,25 @@ export class AdminCoursesComponent implements OnInit, OnDestroy {
     });
   }
 
-  filterCourse(courses: Course) {
+  filterCourse(courses: Course): void {
     this.courses = this.courses.filter(
       (course) => course.name !== courses.name
     );
   }
 
-  approveCourse(course: Course) {
+  approveCourse(course: Course): void {
     this.isLoading = true;
     this.courseDataService.approveCourse(course, 'approve');
     this.isLoading = false;
   }
 
-  rejectCourse(course: Course) {
+  rejectCourse(course: Course): void {
     this.isLoading = true;
     this.courseDataService.approveCourse(course, 'reject');
     this.isLoading = false;
   }
 
-  disableCourse(course: Course) {
+  disableCourse(course: Course): void {
     this.isDisable = true;
     this.courseDataService.disableCourse(course);
 

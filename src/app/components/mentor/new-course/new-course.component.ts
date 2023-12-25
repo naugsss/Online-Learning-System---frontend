@@ -11,8 +11,11 @@ import * as constants from '../../../shared/constants/mentor.constants';
 })
 export class NewCourseComponent {
   constructor(private courseDataService: CourseDataService) {}
+
   @ViewChild('courseForm') form: NgForm;
+
   constants = constants.default;
+
   onSubmit(): void {
     const courseData = {
       name: this.form.value.name,

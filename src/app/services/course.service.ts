@@ -10,27 +10,28 @@ import { CourseDataService } from 'src/app/shared/courseData.service';
 export class CourseService {
   coursesList = new Subject<Course[]>();
   private selectedCourse: Course;
-  constructor(private courseDataService: CourseDataService) {}
 
   allCourses: Course[] = [];
   private pendingCourses: Course[] = [];
   private purchasedCourses: Course[] = [];
 
-  fetchCourses(page: number, size: number) {
+  constructor(private courseDataService: CourseDataService) {}
+
+  fetchCourses(page: number, size: number): void {
     this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
       this.allCourses = courses;
       this.coursesList.next(this.allCourses.slice());
     });
   }
 
-  setAllCourses(course: Course[]) {
+  setAllCourses(course: Course[]): void {
     if (!this.allCourses.length) {
       this.allCourses = course;
     }
     this.coursesList.next(this.allCourses.slice());
   }
 
-  getAllCourses() {
+  getAllCourses(): Course[] {
     return this.allCourses.slice();
   }
 
@@ -42,21 +43,21 @@ export class CourseService {
     return this.selectedCourse;
   }
 
-  setPendingCourses(course: Course[]) {
+  setPendingCourses(course: Course[]): void {
     this.pendingCourses = course;
     this.coursesList.next(this.pendingCourses.slice());
   }
 
-  getPendingCourses() {
+  getPendingCourses(): Course[] {
     return this.pendingCourses.slice();
   }
 
-  setPurchasedCourses(course: Course[]) {
+  setPurchasedCourses(course: Course[]): void {
     this.purchasedCourses = course;
     this.coursesList.next(this.purchasedCourses.slice());
   }
-  
-  getPurchasedCourses() {
+
+  getPurchasedCourses(): Course[] {
     return this.purchasedCourses.slice();
   }
 }

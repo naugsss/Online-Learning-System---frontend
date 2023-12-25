@@ -58,7 +58,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     );
   }
 
-  fetchCourses(page: number, size: number) {
+  fetchCourses(page: number, size: number): void {
     this.loadingMore = true;
     this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
       this.courses = courses;
@@ -67,18 +67,18 @@ export class CoursesComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSearchChange() {
+  onSearchChange(): void {
     this.searchtext = this.searchInput.nativeElement.value;
     this.updateCourses();
   }
 
-  clearSearch() {
+  clearSearch(): void {
     this.searchInput.nativeElement.value = '';
     this.searchtext = '';
     this.onSearchChange();
   }
 
-  loadMoreCourses() {
+  loadMoreCourses(): void {
     this.loadingMore = true;
     this.currentPage++;
     this.courseDataService
@@ -94,7 +94,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
       });
   }
 
-  updateCourses() {
+  updateCourses(): void {
     const userData: {
       username: string;
       role: number;

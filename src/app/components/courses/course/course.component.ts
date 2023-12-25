@@ -25,7 +25,7 @@ export class CourseComponent {
     private courseService: CourseService
   ) {}
 
-  cardClick() {
+  cardClick(): void {
     this.courseService.setSelectedCourse(this.course);
     if (this.router.url === '/courses') {
       this.router.navigate(['courses', this.course.name]);
@@ -34,7 +34,7 @@ export class CourseComponent {
     }
   }
 
-  addTocart(course: Course) {
+  addTocart(course: Course): void {
     this.cartService.addToCart(course);
   }
 

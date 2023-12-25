@@ -58,10 +58,9 @@ export class CourseContentComponent implements OnInit {
     },
   ];
 
-  onVideoClick(video: Video) {
+  onVideoClick(video: Video): void {
     this.isLoadingVideo = true;
     this.videoClickedSubject.next(video);
-    console.log(this.selectedVideo);
     this.isLoadingVideo = false;
   }
 

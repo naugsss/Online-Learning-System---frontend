@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import * as constants from '../../shared/constants/admin.constants';
 
@@ -7,17 +7,15 @@ import * as constants from '../../shared/constants/admin.constants';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
   constants = constants.default;
   changeComponent: boolean = true;
 
-  ngOnInit(): void {}
-
-  courseButtonClicked() {
+  courseButtonClicked(): void {
     this.changeComponent = true;
   }
 
-  mentorButtonClicked() {
+  mentorButtonClicked(): void {
     this.changeComponent = false;
   }
 }

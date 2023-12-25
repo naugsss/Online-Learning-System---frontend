@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     );
   }
 
-  fetchCourses(page: number, size: number) {
+  fetchCourses(page: number, size: number): void {
     this.subscription.push(
       this.courseDataService.fetchCourses(page, size).subscribe((courses) => {
         this.courses = courses;

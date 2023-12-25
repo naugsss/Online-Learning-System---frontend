@@ -13,9 +13,9 @@ export class MentorComponent {
   mentorEarnings: any = [];
   constants = constants.default;
   changeComponent: boolean = true;
+  subscription: Subscription[] = [];
 
   constructor(private courseDataService: CourseDataService) {}
-  subscription: Subscription[] = [];
 
   ngOnInit(): void {
     this.subscription.push(
@@ -33,11 +33,11 @@ export class MentorComponent {
     );
   }
 
-  addCourseButtonClicked() {
+  addCourseButtonClicked(): void {
     this.changeComponent = true;
   }
 
-  addFaqButtonClicked() {
+  addFaqButtonClicked(): void {
     this.changeComponent = false;
   }
 

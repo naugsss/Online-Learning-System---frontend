@@ -21,7 +21,7 @@ export class AdminMentorComponent implements OnInit {
     });
   }
 
-  onButtonClicked() {
+  onButtonClicked(): void {
     this.CourseDataService.addMentor(this.mentorName);
   }
 }

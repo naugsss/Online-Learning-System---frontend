@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { NgToastService } from 'ng-angular-popup';
 
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,7 +20,8 @@ export class LoginComponent {
   constants = constants.default;
   isLoading = false;
   hide: boolean = true;
-  onSubmit(authForm: NgForm) {
+
+  onSubmit(authForm: NgForm): void {
     const username = authForm.value.username;
     const password = authForm.value.password;
     this.isLoading = true;
@@ -28,8 +30,8 @@ export class LoginComponent {
       next: (response) => {
         this.isLoading = false;
         this.toast.success({
-          detail: 'Logged In',
-          summary: 'Log in successfully',
+          detail: this.constants.LOGGED_IN,
+          summary: this.constants.LOG_IN_SUCESS,
         });
         this.router.navigate(['/courses']);
       },
@@ -37,13 +39,13 @@ export class LoginComponent {
         this.isLoading = false;
         this.toast.error({
           detail: error.error.error.message,
-          summary: 'Please enter valid credentials',
+          summary: this.constants.INVALID_CREDENTIALS,
         });
       },
     });
   }
 
-  toggleIcon() {
+  toggleIcon(): void {
     this.hide = !this.hide;
   }
 }

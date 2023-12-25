@@ -58,7 +58,7 @@ export class AuthService {
     return userData && userData.token;
   }
 
-  autoLogin() {
+  autoLogin(): void {
     if (this.isLoggedIn()) {
       const userData: {
         username: string;
@@ -78,19 +78,19 @@ export class AuthService {
     }
   }
 
-  autoLogout(expirationDuration: number) {
+  autoLogout(expirationDuration: number): void {
     setTimeout(() => {
       this.logout();
     }, expirationDuration);
   }
 
-  logout() {
+  logout(): void {
     this.user.next(null);
     this.router.navigate(['/login']);
     localStorage.removeItem('userData');
   }
 
-  handleLogin(response: any) {
+  handleLogin(response: any): void {
     const jwt_token = response['access_token'];
     const decodedToken: loginResponse = jwtDecode(jwt_token);
     const role = decodedToken['role'];

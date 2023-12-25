@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
 
 import {
@@ -21,18 +21,19 @@ export class CourseDataService {
   disableCourseList = new Subject<Course>();
   updateEarnings = new Subject<boolean>();
   constants = constants.default;
+
   constructor(public http: HttpClient, private toast: NgToastService) {}
 
-  fetchCourses(page: number = 1, size: number = 8) {
+  fetchCourses(page: number = 1, size: number = 8): Observable<CourseStatus[]> {
     const url = `http://127.0.0.1:8000/courses?page=${page}&size=${size}`;
     return this.http.get<CourseStatus[]>(url);
   }
 
-  fetchPurchasedCoures() {
+  fetchPurchasedCoures(): Observable<Course[]> {
     return this.http.get<Course[]>('http://127.0.0.1:8000/purchased_courses');
   }
 
-  fetchPendingCourseReqeust() {
+  fetchPendingCourseReqeust(): Observable<Course[]> {
     return this.http.get<Course[]>('http://127.0.0.1:8000/pending_courses');
   }
 
@@ -40,12 +41,12 @@ export class CourseDataService {
     return this.http.get('http://127.0.0.1:8000/mentor');
   }
 
-  fetchCourseFaqs(courseName: string) {
+  fetchCourseFaqs(courseName: string): Observable<CourseFaq[]> {
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_faq`;
     return this.http.get<CourseFaq[]>(url);
   }
 
-  fetchCourseFeedbacks(courseName: string) {
+  fetchCourseFeedbacks(courseName: string): Observable<CourseFeedback[]> {
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
     return this.http.get<CourseFeedback[]>(url);
   }
@@ -66,8 +67,8 @@ export class CourseDataService {
     });
   }
 
-  approveCourse(course: Course, approval_status: string) {
-    return this.http
+  approveCourse(course: Course, approval_status: string): void {
+    this.http
       .put('http://127.0.0.1:8000/courses', {
         course_name: course.name,
         approval_status: approval_status,
@@ -98,7 +99,7 @@ export class CourseDataService {
       });
   }
 
-  addMentor(mentorName: string) {
+  addMentor(mentorName: string): void {
     this.http
       .post('http://127.0.0.1:8000/mentor/', {
         username: mentorName,
@@ -133,7 +134,7 @@ export class CourseDataService {
       });
   }
 
-  addFaq(faq: Faq, courseName: string) {
+  addFaq(faq: Faq, courseName: string): void {
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_faq`;
 
     this.http
@@ -152,7 +153,8 @@ export class CourseDataService {
         },
       });
   }
-  addFeedback(courseName: string, feedback: string, rating: number) {
+
+  addFeedback(courseName: string, feedback: string, rating: number): void {
     rating = Number(rating);
     const url = `http://127.0.0.1:8000/courses/${courseName}/user_feedback`;
     this.http
@@ -184,7 +186,7 @@ export class CourseDataService {
       });
   }
 
-  addCourse(courseData: any) {
+  addCourse(courseData: any): void {
     this.http
       .post('http://127.0.0.1:8000/courses/', {
         name: courseData.name,
@@ -218,7 +220,7 @@ export class CourseDataService {
       });
   }
 
-  purchaseCourse(course: Course) {
+  purchaseCourse(course: Course): void {
     this.http
       .post('http://127.0.0.1:8000/courses/' + course.name, {}, {})
       .subscribe({

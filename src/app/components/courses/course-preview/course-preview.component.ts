@@ -40,11 +40,11 @@ export class CoursePreviewComponent implements OnInit, OnDestroy {
       });
   }
 
-  addTocart(course: Course) {
+  addTocart(course: Course): void {
     this.cartService.addToCart(course);
   }
 
-  onBuyNowClick(course: Course) {
+  onBuyNowClick(course: Course): void {
     this.courseDataService.purchaseCourse(course);
   }
 

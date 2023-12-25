@@ -13,38 +13,37 @@ import * as constants from '../../../shared/constants/auth.constants';
 })
 export class SignupComponent {
   passwordMatch: boolean = false;
+
   constructor(
     private authService: AuthService,
     private toast: NgToastService,
     private router: Router
   ) {}
+
   hide: boolean = true;
   constants = constants.default;
 
-  onSubmit(authForm: NgForm) {
+  onSubmit(authForm: NgForm): void {
     const username = authForm.value.username;
     const password = authForm.value.password;
     const repassword = authForm.value.repassword;
     const email = authForm.value.email;
     const name = authForm.value.name;
-    const noWhitespacePattern = '/^S+$/';
 
     if (password !== repassword) {
       this.passwordMatch = true;
     } else {
       this.authService.signup(email, name, username, password).subscribe({
         next: (response) => {
-          console.log('response', response);
           this.toast.success({
-            detail: 'SignUp successfull.',
-            summary: 'Please log in',
+            detail: this.constants.SIGN_UP_SUCESS,
+            summary: this.constants.HEAD_TO_LOG_IN,
           });
           this.router.navigate(['login']);
         },
         error: (error) => {
-          console.log('error', error);
           this.toast.error({
-            detail: 'SignUp failed',
+            detail: this.constants.SIGN_UP_FAILED,
             summary: error.error.error.message,
           });
         },
@@ -52,7 +51,7 @@ export class SignupComponent {
     }
   }
 
-  toggleIcon() {
+  toggleIcon(): void {
     this.hide = !this.hide;
   }
 }

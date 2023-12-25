@@ -16,6 +16,7 @@ export class MyLearningComponent implements OnInit, OnDestroy {
   courses: Course[] = [];
   subscription: Subscription[] = [];
   constants = constants.default;
+  
   constructor(
     private courseDataService: CourseDataService,
     private courseService: CourseService

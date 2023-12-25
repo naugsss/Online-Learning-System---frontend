@@ -18,7 +18,7 @@ export class cartService {
 
   constructor(private toast: NgToastService) {}
 
-  addToCart(course: Course) {
+  addToCart(course: Course): void {
     this.cart.push(course);
     this.cartItemNumber++;
     this.cartSub.next(this.cart);

@@ -14,4 +14,10 @@ export default {
   USERNAME: 'Username',
   PASSWORD: 'Password',
   REPASSWORD: 'Re-enter password',
+  LOGGED_IN: 'Logged in',
+  LOG_IN_SUCESS: 'Logged in successfully',
+  SIGN_UP_SUCESS: 'Signed up successfully',
+  SIGN_UP_FAILED: 'Signing failed',
+  INVALID_CREDENTIALS: 'Please enter valid credentials',
+  HEAD_TO_LOG_IN: 'Please log in',
 };
