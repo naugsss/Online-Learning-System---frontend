@@ -10,7 +10,7 @@ import * as constants from '../shared/constants/cart.constants';
 })
 export class cartService {
   constants = constants.default;
-  private cart: Course[] = [];
+  public cart: Course[] = [];
   public cartItemNumber: number = 0;
   emptyCartImage: string = 'src/assets/cart/empty.svg';
   cartSub = new BehaviorSubject<Course[]>(this.cart);

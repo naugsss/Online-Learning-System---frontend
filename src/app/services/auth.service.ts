@@ -12,7 +12,7 @@ interface AuthResponseData {
   code: number;
   message: string;
   status: string;
-  token: string;
+  access_token: string;
 }
 
 interface loginResponse {
