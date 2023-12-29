@@ -41,9 +41,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       })
     );
   }
+
   toggleProfileOptions(): void {
     this.showProfileOptions = !this.showProfileOptions;
   }
+
   onLogout(): void {
     this.authService.logout();
     this.showProfileOptions = false;

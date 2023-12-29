@@ -1,19 +1,31 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { HeaderComponent } from './header.component';
-import { AuthService } from 'src/app/services/auth.service';
-import { cartService } from 'src/app/services/cart.service';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let authService: AuthService;
-  let cartService: cartService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, RouterModule, RouterTestingModule],
       declarations: [HeaderComponent],
-      providers: [AuthService, cartService],
     });
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should toggle profile options', () => {
+    component.showProfileOptions = false;
+    component.toggleProfileOptions();
+    expect(component.showProfileOptions).toBeTruthy();
   });
 });

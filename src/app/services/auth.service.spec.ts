@@ -6,6 +6,7 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthService } from './auth.service';
+import { User } from '../components/auth/login/user.model';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -26,18 +27,42 @@ describe('AuthService', () => {
       code: 200,
       message: 'Login successful',
       status: 'success',
-      access_token: 'token',
+      access_token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoxLCJ1c2VybmFtZSI6Im5hdWdzIiwiZXhwIjoxNzAzNzg0NDQzfQ.Ti6JSU7fNvYkohAXueQHyNT3vghdMnExDVrXO84W6Ns',
     };
-    const user = authService.login('naugs', '1234').subscribe((data) => {
+    const user = authService.login('test', 'test').subscribe((data) => {
       expect(data).toEqual(mockResponse);
     });
     const request = httpMock.expectOne('http://127.0.0.1:8000/login');
     request.flush(mockResponse);
     expect(request.request.method).toBe('POST');
+    expect(authService.isLoggedIn()).toBeTruthy();
+    expect(authService.user.value).toBeTruthy();
+    expect(authService.user.value.username).toBe('naugs');
+  });
 
-    // expect(authService.isLoggedIn()).toBeTruthy();
-    // expect(authService.user.value).toBeTruthy();
-    // expect(authService.user.value.username).toBe('naugs');
+  // it('should logout successfully', async () => {
+  //   await authService.logout();
+  //   expect(authService.user.value).toBeNull();
+  //   expect(localStorage.getItem('userData')).toBeNull;
+  // });
+
+  // it('should autologout automcatically', () => {
+  //   authService.autoLogout(33000);
+  // });
+
+  it('should automcatically log in', () => {
+    const user = new User(
+      'test',
+      1,
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoxLCJ1c2VybmFtZSI6Im5hdWdzIiwiZXhwIjoxNzAzNzg0NDQzfQ.Ti6JSU7fNvYkohAXueQHyNT3vghdMnExDVrXO84W6Ns'
+    );
+
+    localStorage.setItem('userData', JSON.stringify(user));
+
+    authService.autoLogin();
+    expect(authService.user.value).toBeTruthy();
+    expect(authService.user.value.username).toBe('test');
   });
 
   it('should signup successfully', async () => {
@@ -48,12 +73,16 @@ describe('AuthService', () => {
       access_token: 'token',
     };
     const user = await authService
-      .signup('naugs@mail.com', 'aaryan', 'test', '12345')
+      .signup('naugs@mail.com', 'aaryan', 'naugs', '12345')
       .subscribe((data) => {
         expect(data).toBe(mockResponse);
       });
     const request = httpMock.expectOne('http://127.0.0.1:8000/register');
     request.flush(mockResponse);
     expect(request.request.method).toBe('POST');
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 });
