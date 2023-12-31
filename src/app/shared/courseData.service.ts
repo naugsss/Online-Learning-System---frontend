@@ -13,6 +13,12 @@ import {
 import { Faq } from '../components/mentor/add-faq/add-faq.component';
 import * as constants from '../shared/constants/courseData.constants';
 
+interface MentorEarning {
+  name: string;
+  course_name: string;
+  earning: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -38,7 +44,7 @@ export class CourseDataService {
   }
 
   fetchMentorEarning() {
-    return this.http.get('http://127.0.0.1:8000/mentor');
+    return this.http.get<MentorEarning[]>('http://127.0.0.1:8000/mentor');
   }
 
   fetchCourseFaqs(courseName: string): Observable<CourseFaq[]> {

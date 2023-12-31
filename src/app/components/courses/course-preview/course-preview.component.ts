@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { Course, CourseFaq, CourseFeedback } from '../course/course.model';
 import { CourseService } from '../../../services/course.service';
-import { cartService } from '../../../services/cart.service';
+import { CartService } from '../../../services/cart.service';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import * as constants from '../../../shared/constants/courses.constants';
 
@@ -21,7 +21,7 @@ export class CoursePreviewComponent implements OnInit, OnDestroy {
   constants = constants.default;
   constructor(
     private courseService: CourseService,
-    private cartService: cartService,
+    private cartService: CartService,
     private courseDataService: CourseDataService
   ) {}
 

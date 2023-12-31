@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
-import { cartService } from '../../services/cart.service';
+import { CartService } from '../../services/cart.service';
 import * as constants from '../../shared/constants/home_constants';
 
 @Component({
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private cartService: cartService
+    private cartService: CartService
   ) {}
   ngOnInit(): void {
     this.subscription.push(

@@ -2,7 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Course } from './course.model';
-import { cartService } from '../../../services/cart.service';
+import { CartService } from '../../../services/cart.service';
 import { CoursePreviewComponent } from '../course-preview/course-preview.component';
 import { CourseService } from '../../../services/course.service';
 import * as constants from '../../../shared/constants/course.constants';
@@ -20,7 +20,7 @@ export class CourseComponent {
   constants = constants.default;
 
   constructor(
-    private cartService: cartService,
+    private cartService: CartService,
     private router: Router,
     private courseService: CourseService
   ) {}

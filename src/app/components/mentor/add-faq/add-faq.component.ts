@@ -29,8 +29,8 @@ export class AddFaqComponent {
   removeFaq(): void {
     this.faqs.splice(this.faqs.length - 1, 1);
   }
+  
   onSubmitFaq(): void {
-    console.log(this.faqs);
     const faqs = this.faqs;
     for (const faq of faqs) {
       this.courseDataService.addFaq(faq, this.inputText.value);

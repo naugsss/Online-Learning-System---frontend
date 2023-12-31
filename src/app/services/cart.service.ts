@@ -8,7 +8,7 @@ import * as constants from '../shared/constants/cart.constants';
 @Injectable({
   providedIn: 'root',
 })
-export class cartService {
+export class CartService {
   constants = constants.default;
   public cart: Course[] = [];
   public cartItemNumber: number = 0;

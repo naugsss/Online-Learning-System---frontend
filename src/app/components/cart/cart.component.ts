@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { cartService } from '../../services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { Course } from '../courses/course/course.model';
 import { CourseDataService } from 'src/app/shared/courseData.service';
 import * as constants from '../../shared/constants/cart.constants';
@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   emptyCartImage: string = null;
   constants = constants.default;
   constructor(
-    private cartService: cartService,
+    private cartService: CartService,
     private courseDataService: CourseDataService
   ) {}
 

@@ -22,4 +22,16 @@ describe('admin component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should switch to mentor dashboard when mentor button is clicked', () => {
+    component.changeComponent = true;
+    component.mentorButtonClicked();
+    expect(component.changeComponent).toBeFalsy();
+  });
+
+  it('should switch to admin dashboard when course button is clicked', () => {
+    component.changeComponent = true;
+    component.courseButtonClicked();
+    expect(component.changeComponent).toBeTruthy();
+  });
 });

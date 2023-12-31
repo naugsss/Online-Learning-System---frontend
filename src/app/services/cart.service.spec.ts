@@ -1,47 +1,42 @@
 import { TestBed } from '@angular/core/testing';
 
-import { cartService } from './cart.service';
+import { CartService } from './cart.service';
 import { ToastrService } from 'ngx-toastr';
 
 describe('cartService', () => {
-  let cartSer: cartService;
+  let cartSer: CartService;
   let toastService: ToastrService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        cartService,
+        CartService,
         {
           provide: toastService,
           useValue: jasmine.createSpyObj('ToastService', ['success']),
         },
       ],
     });
-    cartSer = TestBed.inject(cartService);
+    cartSer = TestBed.inject(CartService);
   });
 
-  //   it('should store and retrieve cart data from local storage', () => {
-  //     const mockCourse = {
-  //       name: 'Test Course',
-  //       price: 100,
-  //       duration: 12,
-  //       rating: 4.4,
-  //       status: 'active',
-  //       approval_status: 'approved',
-  //     };
+  it('should remove item from the cart', () => {
+    const mockCourse = {
+      name: 'Test Course',
+      price: 100,
+      duration: 12,
+      rating: 4.4,
+      status: 'active',
+      approval_status: 'approved',
+    };
+    cartSer.addToCart(mockCourse);
+    cartSer.removeFromCart(mockCourse.name);
+    expect(localStorage.getItem('cart')).not.toContain('Test Course');
+  });
 
-  //     cartService.addToCart(mockCourse);
-
-  //     expect(localStorage.getItem('cart')).toContain('Test Course');
-
-  //     localStorage.removeItem('cart');
-  //     cartService.cart = [];
-  //     cartService.cartItemNumber = 0;
-  //     cartService.getCart();
-
-  //     expect(cartService.cart.length).toBe(1);
-  //     expect(cartService.cartItemNumber).toBe(1);
-  //   });
+  it('should get cart', () => {
+    expect(cartSer.getCart()).toEqual(cartSer.cartSub.asObservable());
+  });
 
   it('should add item to the cart', () => {
     const mockCourse = {
