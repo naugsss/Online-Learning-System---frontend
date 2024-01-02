@@ -16,7 +16,7 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [AuthService],
-    }).compileComponents();
+    });
 
     authService = TestBed.inject(AuthService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -40,16 +40,6 @@ describe('AuthService', () => {
     expect(authService.user.value).toBeTruthy();
     expect(authService.user.value.username).toBe('naugs');
   });
-
-  // it('should logout successfully', async () => {
-  //   await authService.logout();
-  //   expect(authService.user.value).toBeNull();
-  //   expect(localStorage.getItem('userData')).toBeNull;
-  // });
-
-  // it('should autologout automcatically', () => {
-  //   authService.autoLogout(33000);
-  // });
 
   it('should automcatically log in', () => {
     const user = new User(
